@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thunder Strike - Rock Band</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #dc2626;
+        --color-secondary: #1f2937;
+        --color-accent: #f59e0b;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #dc2626, #f59e0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      body {
+        font-family: "Oswald", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-bold,
+      .font-black {
+        font-family: "Bebas Neue", sans-serif;
+      }
+
+      .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 glass-effect transition-all duration-300"
+      id="navbar"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-guitar text-primary text-3xl"></i>
+            <span class="text-2xl font-bold gradient-text">Thunder Strike</span>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="hover:text-primary transition-colors font-medium"
+              >Início</a
+            >
+            <a
+              href="#about"
+              class="hover:text-primary transition-colors font-medium"
+              >Sobre</a
+            >
+            <a
+              href="#music"
+              class="hover:text-primary transition-colors font-medium"
+              >Música</a
+            >
+            <a
+              href="#shows"
+              class="hover:text-primary transition-colors font-medium"
+              >Shows</a
+            >
+            <a
+              href="#gallery"
+              class="hover:text-primary transition-colors font-medium"
+              >Galeria</a
+            >
+            <a
+              href="#contact"
+              class="hover:text-primary transition-colors font-medium"
+              >Contato</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-gray-900">
+        <div class="container mx-auto px-4 py-4 space-y-4">
+          <a href="#home" class="block hover:text-primary transition-colors"
+            >Início</a
+          >
+          <a href="#about" class="block hover:text-primary transition-colors"
+            >Sobre</a
+          >
+          <a href="#music" class="block hover:text-primary transition-colors"
+            >Música</a
+          >
+          <a href="#shows" class="block hover:text-primary transition-colors"
+            >Shows</a
+          >
+          <a href="#gallery" class="block hover:text-primary transition-colors"
+            >Galeria</a
+          >
+          <a href="#contact" class="block hover:text-primary transition-colors"
+            >Contato</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center parallax"
+      style="
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920');
+      "
+    >
+      <div class="container mx-auto px-4 text-center z-10">
+        <div class="animate-float">
+          <h1
+            class="text-6xl md:text-8xl font-black mb-6 gradient-text uppercase tracking-tight"
+          >
+            Thunder Strike
+          </h1>
+          <p class="text-2xl md:text-4xl mb-8 font-light">
+            Rock que ecoa na sua alma
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#music"
+              class="bg-primary hover:bg-red-700 px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105"
+            >
+              <i class="fas fa-music mr-2"></i>Ouvir Agora
+            </a>
+            <a
+              href="#shows"
+              class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105"
+            >
+              <i class="fas fa-calendar-alt mr-2"></i>Próximos Shows
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <a href="#about" class="animate-bounce">
+          <i class="fas fa-chevron-down text-3xl text-white opacity-70"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-black mb-4 gradient-text">Sobre a Banda</h2>
+          <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800"
+              alt="Thunder Strike Band"
+              class="rounded-lg shadow-2xl"
+            />
+          </div>
+          <div>
+            <h3 class="text-3xl font-bold mb-6">Nossa História</h3>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+              Formada em 2018, Thunder Strike nasceu da paixão de quatro músicos
+              pela energia crua do rock. Com influências que vão do classic rock
+              ao metal moderno, criamos um som único que ressoa com fãs de todas
+              as idades.
+            </p>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+              Nossas letras falam de liberdade, rebeldia e a busca por algo
+              maior. Cada show é uma experiência única, onde a música e a
+              energia se encontram para criar momentos inesquecíveis.
+            </p>
+            <div class="flex gap-4 mt-8">
+              <a href="#" class="text-3xl hover:text-primary transition-colors"
+                ><i class="fab fa-spotify"></i
+              ></a>
+              <a href="#" class="text-3xl hover:text-primary transition-colors"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="#" class="text-3xl hover:text-primary transition-colors"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-3xl hover:text-primary transition-colors"
+                ><i class="fab fa-facebook"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Band Members -->
+        <div class="mt-20">
+          <h3 class="text-4xl font-bold text-center mb-12">Os Membros</h3>
+          <div class="grid md:grid-cols-4 gap-8">
+            <!-- Member 1 -->
+            <div class="text-center group">
+              <div class="relative overflow-hidden rounded-lg mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
+                  alt="Alex Thunder - Vocalista"
+                  class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div class="absolute bottom-4 left-4 right-4">
+                    <p class="text-sm text-gray-300">
+                      <i class="fas fa-guitar mr-2"></i>Vocalista & Guitarra
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h4 class="text-xl font-bold">Alex Thunder</h4>
+              <p class="text-gray-400">Vocal & Guitarra</p>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="text-center group">
+              <div class="relative overflow-hidden rounded-lg mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400"
+                  alt="Mike Strike - Guitarra"
+                  class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div class="absolute bottom-4 left-4 right-4">
+                    <p class="text-sm text-gray-300">
+                      <i class="fas fa-guitar mr-2"></i>Guitarra Solo
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h4 class="text-xl font-bold">Mike Strike</h4>
+              <p class="text-gray-400">Guitarra Solo</p>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="text-center group">
+              <div class="relative overflow-hidden rounded-lg mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400"
+                  alt="Jake Bass - Baixo"
+                  class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div class="absolute bottom-4 left-4 right-4">
+                    <p class="text-sm text-gray-300">
+                      <i class="fas fa-guitar mr-2"></i>Baixo & Backing Vocals
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h4 class="text-xl font-bold">Jake Bass</h4>
+              <p class="text-gray-400">Baixo</p>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="text-center group">
+              <div class="relative overflow-hidden rounded-lg mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400"
+                  alt="Drummer Dave - Bateria"
+                  class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div class="absolute bottom-4 left-4 right-4">
+                    <p class="text-sm text-gray-300">
+                      <i class="fas fa-drum mr-2"></i>Bateria
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h4 class="text-xl font-bold">Drummer Dave</h4>
+              <p class="text-gray-400">Bateria</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="py-20 bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-black mb-4 gradient-text">Nossa Música</h2>
+          <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <!-- Latest Album -->
+        <div class="mb-16">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+                alt="Album Cover"
+                class="rounded-lg shadow-2xl w-full"
+              />
+            </div>
+            <div>
+              <span
+                class="text-primary font-bold uppercase text-sm tracking-wide"
+                >Álbum Mais Recente</span
+              >
+              <h3 class="text-4xl font-black mb-4 mt-2">Electric Storm</h3>
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Nosso terceiro álbum de estúdio, "Electric Storm", captura a
+                essência do rock moderno com 12 faixas que vão do hard rock ao
+                metal alternativo. Produzido por renomados engenheiros de som,
+                este álbum representa nossa evolução musical.
+              </p>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="bg-primary hover:bg-red-700 px-6 py-3 rounded-full font-bold transition-all"
+                >
+                  <i class="fab fa-spotify mr-2"></i>Spotify
+                </a>
+                <a
+                  href="#"
+                  class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 px-6 py-3 rounded-full font-bold transition-all"
+                >
+                  <i class="fab fa-apple mr-2"></i>Apple Music
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Tracks -->
+        <div>
+          <h3 class="text-3xl font-bold mb-8 text-center">Top Faixas</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Track 1 -->
+            <div
+              class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all cursor-pointer group"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fas fa-play text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg">Thunder Road</h4>
+                    <p class="text-gray-400 text-sm">Electric Storm</p>
+                  </div>
+                </div>
+                <span class="text-gray-500">3:42</span>
+              </div>
+            </div>
+
+            <!-- Track 2 -->
+            <div
+              class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all cursor-pointer group"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fas fa-play text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg">Midnight Rage</h4>
+                    <p class="text-gray-400 text-sm">Electric Storm</p>
+                  </div>
+                </div>
+                <span class="text-gray-500">4:15</span>
+              </div>
+            </div>
+
+            <!-- Track 3 -->
+            <div
+              class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all cursor-pointer group"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fas fa-play text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg">Rebel Heart</h4>
+                    <p class="text-gray-400 text-sm">Electric Storm</p>
+                  </div>
+                </div>
+                <span class="text-gray-500">3:58</span>
+              </div>
+            </div>
+
+            <!-- Track 4 -->
+            <div
+              class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all cursor-pointer group"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fas fa-play text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg">Wild Fire</h4>
+                    <p class="text-gray-400 text-sm">Electric Storm</p>
+                  </div>
+                </div>
+                <span class="text-gray-500">4:32</span>
+              </div>
+            </div>
+
+            <!-- Track 5 -->
+            <div
+              class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all cursor-pointer group"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fas fa-play text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg">Storm Chaser</h4>
+                    <p class="text-gray-400 text-sm">Electric Storm</p>
+                  </div>
+                </div>
+                <span class="text-gray-500">5:12</span>
+              </div>
+            </div>
+
+            <!-- Track 6 -->
+            <div
+              class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all cursor-pointer group"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fas fa-play text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg">Electric Dreams</h4>
+                    <p class="text-gray-400 text-sm">Electric Storm</p>
+                  </div>
+                </div>
+                <span class="text-gray-500">4:08</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shows Section -->
+    <section id="shows" class="py-20 bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-black mb-4 gradient-text">Próximos Shows</h2>
+          <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Show 1 -->
+          <div
+            class="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+              alt="Show"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-primary px-3 py-1 rounded-full text-sm font-bold"
+                  >15 JUN</span
+                >
+                <span class="text-gray-400">2024</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-2">Rock Festival</h3>
+              <p class="text-gray-400 mb-4">
+                <i class="fas fa-map-marker-alt mr-2"></i>São Paulo, SP
+              </p>
+              <a
+                href="#"
+                class="bg-primary hover:bg-red-700 px-6 py-2 rounded-full font-bold inline-block transition-all"
+              >
+                Comprar Ingresso
+              </a>
+            </div>
+          </div>
+
+          <!-- Show 2 -->
+          <div
+            class="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+              alt="Show"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-primary px-3 py-1 rounded-full text-sm font-bold"
+                  >22 JUN</span
+                >
+                <span class="text-gray-400">2024</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-2">Summer Rock Night</h3>
+              <p class="text-gray-400 mb-4">
+                <i class="fas fa-map-marker-alt mr-2"></i>Rio de Janeiro, RJ
+              </p>
+              <a
+                href="#"
+                class="bg-primary hover:bg-red-700 px-6 py-2 rounded-full font-bold inline-block transition-all"
+              >
+                Comprar Ingresso
+              </a>
+            </div>
+          </div>
+
+          <!-- Show 3 -->
+          <div
+            class="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+              alt="Show"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-primary px-3 py-1 rounded-full text-sm font-bold"
+                  >05 JUL</span
+                >
+                <span class="text-gray-400">2024</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-2">Metal Fest</h3>
+              <p class="text-gray-400 mb-4">
+                <i class="fas fa-map-marker-alt mr-2"></i>Belo Horizonte, MG
+              </p>
+              <a
+                href="#"
+                class="bg-primary hover:bg-red-700 px-6 py-2 rounded-full font-bold inline-block transition-all"
+              >
+                Comprar Ingresso
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-black mb-4 gradient-text">Galeria</h2>
+          <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="grid gap-4">
+            <div class="overflow-hidden rounded-lg group cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+                alt="Gallery"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div class="overflow-hidden rounded-lg group cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600"
+                alt="Gallery"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div class="overflow-hidden rounded-lg group cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+                alt="Gallery"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div class="overflow-hidden rounded-lg group cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600"
+                alt="Gallery"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div class="overflow-hidden rounded-lg group cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+                alt="Gallery"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div class="overflow-hidden rounded-lg group cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+                alt="Gallery"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-black mb-4 gradient-text">
+            Entre em Contato
+          </h2>
+          <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6">Vamos Conversar</h3>
+            <p class="text-gray-300 mb-8 leading-relaxed">
+              Quer nos contratar para um show? Tem uma proposta de colaboração?
+              Ou simplesmente quer dizer oi? Estamos sempre abertos para
+              conversar!
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-envelope text-white"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Email</p>
+                  <p class="text-gray-400">contact@thunderstrike.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-phone text-white"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Telefone</p>
+                  <p class="text-gray-400">+55 (11) 9999-9999</p>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-map-marker-alt text-white"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Localização</p>
+                  <p class="text-gray-400">São Paulo, Brasil</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-bold mb-4">Siga-nos</h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-all"
+                >
+                  <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-all"
+                >
+                  <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-all"
+                >
+                  <i class="fab fa-youtube text-xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-all"
+                >
+                  <i class="fab fa-spotify text-xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div>
+            <form class="space-y-6">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Seu Nome"
+                  class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Seu Email"
+                  class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Assunto"
+                  class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+              <div>
+                <textarea
+                  rows="5"
+                  placeholder="Sua Mensagem"
+                  class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors resize-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-primary hover:bg-red-700 px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105"
+              >
+                Enviar Mensagem
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gray-900 border-t border-gray-800">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold mb-4">Fique por Dentro</h3>
+        <p class="text-gray-400 mb-6">
+          Receba notícias sobre novos lançamentos, shows e muito mais!
+        </p>
+        <form class="max-w-md mx-auto flex gap-4">
+          <input
+            type="email"
+            placeholder="Seu email"
+            class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
+          />
+          <button
+            type="submit"
+            class="bg-primary hover:bg-red-700 px-6 py-3 rounded-lg font-bold transition-all"
+          >
+            Inscrever-se
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i class="fas fa-guitar text-primary text-2xl"></i>
+              <span class="text-xl font-bold gradient-text"
+                >Thunder Strike</span
+              >
+            </div>
+            <p class="text-gray-400 text-sm">
+              Rock que ecoa na sua alma. Música que transforma.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Links Rápidos</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#home" class="hover:text-primary">Início</a></li>
+              <li><a href="#about" class="hover:text-primary">Sobre</a></li>
+              <li><a href="#music" class="hover:text-primary">Música</a></li>
+              <li><a href="#shows" class="hover:text-primary">Shows</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Música</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-primary">Álbuns</a></li>
+              <li><a href="#" class="hover:text-primary">Singles</a></li>
+              <li><a href="#" class="hover:text-primary">Vídeos</a></li>
+              <li><a href="#" class="hover:text-primary">Merchandise</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Contato</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>contact@thunderstrike.com</li>
+              <li>+55 (11) 9999-9999</li>
+              <li>São Paulo, Brasil</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>&copy; 2024 Thunder Strike. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("bg-gray-900");
+          navbar.classList.remove("glass-effect");
+        } else {
+          navbar.classList.remove("bg-gray-900");
+          navbar.classList.add("glass-effect");
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

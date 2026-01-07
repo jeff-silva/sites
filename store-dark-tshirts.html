@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abissal | Archivist of the Obscure</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-void-black: #050505;
+        --color-blood-red: #8a0303;
+        --color-bone-white: #d4d4d4;
+        --color-ashes-gray: #4a4a4a;
+        --color-cold-blue: #1c2e4a;
+      }
+
+      body {
+        background-color: var(--color-void-black);
+        color: var(--color-bone-white);
+        font-family: "Courier Prime", monospace;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cinzel", serif;
+        letter-spacing: 0.05em;
+      }
+      
+      .font-gothic {
+        font-family: "UnifrakturMaguntia", cursive;
+      }
+
+      /* Noise Grain Texture */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.07;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Occult Symbols Rotation */
+      .symbol-spin {
+        animation: spin-slow 20s linear infinite;
+      }
+
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Glitch Effect on Hover */
+      .glitch-hover:hover {
+        animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
+          infinite;
+        filter: invert(1) contrast(1.5);
+      }
+
+      @keyframes glitch-anim {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      .red-glow {
+        text-shadow: 0 0 10px rgba(138, 3, 3, 0.8);
+      }
+
+      /* Floating Animation */
+      .symbol-float {
+        animation: float-anim 6s ease-in-out infinite;
+      }
+      
+      @keyframes float-anim {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+      
+      /* Custom Scrollbar for sidebar */
+      aside::-webkit-scrollbar {
+          width: 2px;
+      }
+      aside::-webkit-scrollbar-track {
+          background: #111;
+      }
+      aside::-webkit-scrollbar-thumb {
+          background: #8a0303;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-blood-red selection:text-black">
+    <div class="noise-overlay"></div>
+
+    <!-- Background Symbols -->
+    <div
+      class="fixed top-20 left-10 text-ashes-gray/10 text-9xl pointer-events-none select-none z-0"
+    >
+      🜏
+    </div>
+    <div
+      class="fixed bottom-40 right-10 text-ashes-gray/10 text-9xl pointer-events-none select-none z-0 symbol-spin"
+    >
+      ⛤
+    </div>
+    <div
+      class="fixed top-1/3 right-1/4 text-ashes-gray/10 text-6xl pointer-events-none select-none z-0"
+    >
+      👁
+    </div>
+    <!-- New Symbols -->
+    <div class="fixed top-1/4 left-1/3 text-blood-red/5 text-8xl pointer-events-none select-none z-0 symbol-float">
+      🜂
+    </div>
+    <div class="fixed bottom-10 left-20 text-ashes-gray/10 text-6xl pointer-events-none select-none z-0" style="transform: rotate(45deg);">
+      🜍
+    </div>
+     <div class="fixed top-10 right-1/3 text-ashes-gray/5 text-9xl pointer-events-none select-none z-0 symbol-spin" style="animation-duration: 40s;">
+      ❂
+    </div>
+    <div class="fixed bottom-1/4 right-20 text-blood-red/10 text-5xl pointer-events-none select-none z-0 symbol-float" style="animation-delay: 1s;">
+      ☾
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-void-black/80 backdrop-grayscale border-b border-ashes-gray/30">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 group">
+          <span class="text-2xl tracking-widest uppercase font-cinzel text-white group-hover:text-blood-red transition-colors font-bold">Abissal</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-500">
+          <a href="#shop" class="hover:text-white transition-colors">Cinema</a>
+          <a href="#shop" class="hover:text-white transition-colors">Sonic</a>
+          <a href="#shop" class="hover:text-white transition-colors">Oddities</a>
+          <a href="#manifesto" class="text-blood-red hover:text-white transition-colors">Manifesto</a>
+        </div>
+
+        <!-- Cart -->
+        <div class="text-white hover:text-blood-red cursor-pointer transition-colors relative">
+          <i class="fas fa-shopping-basket text-xl"></i>
+          <span class="absolute -top-2 -right-2 text-[10px] bg-blood-red text-black font-bold px-1 rounded-sm">0</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center pt-20">
+      <div class="absolute inset-0 z-0 opacity-40">
+        <img
+          src="https://placehold.co/1920x1080/000000/222222?text=..."
+          class="w-full h-full object-cover grayscale contrast-150"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-void-black via-transparent to-void-black"></div>
+      </div>
+
+      <div class="relative z-10 text-center max-w-4xl px-6">
+        <p class="text-blood-red tracking-[0.5em] text-sm md:text-base mb-4 uppercase animate-pulse">
+          Do not look away
+        </p>
+        <h1 class="text-6xl md:text-9xl mb-6 leading-none font-gothic">
+          <span class="bg-blood-red text-void-black">
+            Cult<br>Obscure<br>Forbidden
+          </span>
+        </h1>
+        <p class="text-gray-400 max-w-xl mx-auto mb-10 text-sm md:text-lg italic">
+          Curated artifacts from the depths of avant-garde horror, noise music, and esoteric cinema. 
+          Wear the darkness you watch.
+        </p>
+        <a href="#shop" class="inline-block border border-white px-10 py-4 hover:bg-blood-red hover:border-blood-red hover:text-black transition-all duration-300 uppercase tracking-widest text-sm font-bold">
+          Enter The Archive
+        </a>
+      </div>
+    </header>
+
+    <!-- Product Area with Filters -->
+    <section id="shop" class="py-24 relative z-10 border-t border-gray-900">
+      <div class="container mx-auto px-6 flex flex-col lg:flex-row gap-12">
+        
+        <!-- Sidebar Filters -->
+        <aside class="lg:w-1/4 space-y-12">
+            <!-- Search -->
+            <div class="relative">
+                <input type="text" placeholder="Search the archive..." class="w-full bg-gray-900/50 border border-gray-700 text-white p-3 pl-10 focus:border-blood-red outline-none text-sm uppercase placeholder-gray-600 transition-colors">
+                <i class="fas fa-search absolute top-3.5 left-3 text-gray-500"></i>
+            </div>
+
+            <!-- Categories -->
+            <div>
+                <h3 class="text-xl text-white mb-6 border-l-2 border-blood-red pl-3 uppercase flex items-center gap-2"><span class="text-blood-red">🜃</span> Categoria</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4 bg-gray-900 border-gray-700 rounded-none focus:ring-0">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Filmes Cult (66)</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4 bg-gray-900 border-gray-700 rounded-none focus:ring-0">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Bandas Obscuras (42)</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4 bg-gray-900 border-gray-700 rounded-none focus:ring-0">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Anime Gore (13)</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4 bg-gray-900 border-gray-700 rounded-none focus:ring-0">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Ocultismo (9)</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4 bg-gray-900 border-gray-700 rounded-none focus:ring-0">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Séries B (21)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Product Type -->
+            <div>
+                <h3 class="text-xl text-white mb-6 border-l-2 border-blood-red pl-3 uppercase flex items-center gap-2"><span class="text-blood-red">🜂</span> Tipo de Produto</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Camisetas</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Moletons</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Canecas</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Almofadas</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="accent-blood-red w-4 h-4">
+                        <span class="ml-3 text-gray-400 group-hover:text-white transition-colors text-sm uppercase">Prints / Quadros</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Sizes -->
+            <div>
+                <h3 class="text-xl text-white mb-6 border-l-2 border-blood-red pl-3 uppercase flex items-center gap-2"><span class="text-blood-red">🜄</span> Tamanho</h3>
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="border border-gray-700 hover:border-white py-2 text-xs uppercase hover:bg-white hover:text-black transition-all">P</button>
+                    <button class="border border-gray-700 hover:border-white py-2 text-xs uppercase hover:bg-white hover:text-black transition-all">M</button>
+                    <button class="border border-gray-700 hover:border-white py-2 text-xs uppercase hover:bg-white hover:text-black transition-all bg-white text-black font-bold">G</button>
+                    <button class="border border-gray-700 hover:border-white py-2 text-xs uppercase hover:bg-white hover:text-black transition-all">GG</button>
+                    <button class="border border-gray-700 hover:border-white py-2 text-xs uppercase hover:bg-white hover:text-black transition-all">XG</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <main class="lg:w-3/4">
+             <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-900">
+                 <p class="text-gray-500 text-sm">Showing 6 of 666 Artifacts</p>
+                 <div class="flex gap-4 text-sm">
+                     <span class="text-gray-500">Sort by:</span>
+                     <select class="bg-transparent text-white outline-none cursor-pointer uppercase font-bold">
+                         <option>Newest</option>
+                         <option>Price: Low to High</option>
+                         <option>Price: High to Low</option>
+                     </select>
+                 </div>
+             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            
+            <!-- Item 1 -->
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4 border border-gray-800 group-hover:border-blood-red transition-colors">
+                <img src="https://placehold.co/600x800/111111/dddddd?text=ERASERHEAD" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 glitch-hover filter grayscale contrast-125">
+                <div class="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 font-mono uppercase">Lynchian Tech</div>
+                </div>
+                <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-blood-red transition-colors">In Heaven T-Shirt</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Filme / Surrealismo</p>
+                </div>
+                <span class="text-lg font-bold text-gray-300">$35</span>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4 border border-gray-800 group-hover:border-blood-red transition-colors">
+                <img src="https://placehold.co/600x800/050505/8a0303?text=SUSPIRIA" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 glitch-hover">
+                <div class="absolute top-2 right-2 flex gap-1">
+                    <span class="text-blood-red text-xs">●</span>
+                    <span class="text-blood-red text-xs">●</span>
+                    <span class="text-blood-red text-xs">●</span>
+                </div>
+                </div>
+                <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-blood-red transition-colors">Three Mothers Hoodie</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Filme / Giallo</p>
+                </div>
+                <span class="text-lg font-bold text-gray-300">$65</span>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4 border border-gray-800 group-hover:border-blood-red transition-colors">
+                <img src="https://placehold.co/600x800/1a1a1a/cccccc?text=JOY+DIVISION" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 glitch-hover filter grayscale contrast-150">
+                </div>
+                <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-blood-red transition-colors">Unknown Pleasures Mug</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Música / Post-Punk</p>
+                </div>
+                <span class="text-lg font-bold text-gray-300">$20</span>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4 border border-gray-800 group-hover:border-blood-red transition-colors">
+                <img src="https://placehold.co/600x800/000000/ffffff?text=JODOROWSKY" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 glitch-hover">
+                <div class="absolute bottom-2 left-2 bg-blood-red text-black text-xs px-2 py-1 font-mono uppercase font-bold">Limited</div>
+                </div>
+                <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-blood-red transition-colors">Holy Mountain Print</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Arte / Esotérico</p>
+                </div>
+                <span class="text-lg font-bold text-gray-300">$45</span>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4 border border-gray-800 group-hover:border-blood-red transition-colors">
+                <img src="https://placehold.co/600x800/0a0a0a/444444?text=BAUHAUS" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 glitch-hover filter grayscale contrast-125">
+                </div>
+                <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-blood-red transition-colors">Bela Lugosi's Tote</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Música / Goth</p>
+                </div>
+                <span class="text-lg font-bold text-gray-300">$25</span>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden bg-gray-900 mb-4 border border-gray-800 group-hover:border-blood-red transition-colors">
+                <img src="https://placehold.co/600x800/050505/222222?text=H%C3%A4xan" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 glitch-hover">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-white/20">⛧</div>
+                </div>
+                <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-blood-red transition-colors">Witchcraft Pillow</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Cinema / Silent</p>
+                </div>
+                <span class="text-lg font-bold text-gray-300">$40</span>
+                </div>
+            </div>
+
+            </div>
+
+             <div class="mt-24 text-center">
+                <button class="border border-white px-8 py-3 text-sm hover:bg-white hover:text-black transition-all uppercase tracking-widest">
+                    Load More from the Abyss
+                </button>
+            </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- Manifesto / Text Section -->
+    <section id="manifesto" class="py-24 bg-zinc-900 text-center relative border-y border-gray-800">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-4xl mb-6 text-blood-red">🜄 🜃 🜂 🜁</div>
+            <h2 class="text-4xl md:text-5xl mb-8">We Serve the Void</h2>
+            <p class="text-gray-400 leading-loose">
+                In a world of mass-produced mediocrity, we curate the strange, the unsettling, and the profound. 
+                Our garments are not mere clothing; they are signals to others who dwell in the shadows. 
+                Whether you worship at the altar of Jodorowsky or find solace in the noise of Merzbow, 
+                you have found your coven.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-20 text-gray-600 text-xs border-t border-gray-900 relative overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div>
+                <h4 class="text-white text-lg mb-6">Explore</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-blood-red transition-colors">New Arrivals</a></li>
+                    <li><a href="#" class="hover:text-blood-red transition-colors">Best Sellers</a></li>
+                    <li><a href="#" class="hover:text-blood-red transition-colors">Artists</a></li>
+                    <li><a href="#" class="hover:text-blood-red transition-colors">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-lg mb-6">Support</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-blood-red transition-colors">Shipping & Returns</a></li>
+                    <li><a href="#" class="hover:text-blood-red transition-colors">FAQ</a></li>
+                    <li><a href="#" class="hover:text-blood-red transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-white text-lg mb-6">Join the Outer Circle</h4>
+                <p class="mb-6 max-w-md">Subscribe to receive updates on new drops, esoteric rituals, and forbidden knowledge.</p>
+                <div class="flex border-b border-white/20 pb-2 max-w-sm">
+                    <input type="email" placeholder="ENTER YOUR EMAIL" class="bg-transparent w-full outline-none text-white placeholder-gray-700 uppercase">
+                    <button class="text-blood-red hover:text-white uppercase font-bold text-sm">Submit</button>
+                </div>
+                <div class="flex gap-6 mt-8 text-xl">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-20 text-center uppercase tracking-widest opacity-30">
+            &copy; 2026 Abissal. The abyss gazes back.
+        </div>
+        
+        <!-- Background decorative text -->
+        <div class="absolute bottom-0 right-0 text-[10rem] leading-none text-white/5 pointer-events-none select-none font-bold mix-blend-overlay">
+            VOID
+        </div>
+    </footer>
+  </body>
+</html>

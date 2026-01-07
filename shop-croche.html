@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helena Tramas | Arte em Crochê</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-wool-cream: #fdfbf7;
+        --color-wool-beige: #e6dace;
+        --color-crochet-rose: #d4a3a3;
+        --color-crochet-sage: #9caf88;
+        --color-crochet-terra: #c27ba0;
+        --color-crochet-brown: #5d4037;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: var(--color-wool-cream);
+        color: #4a4a4a;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .font-signature {
+        font-family: "Dancing Script", cursive;
+      }
+
+      .yarn-texture {
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e6dace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden">
+    <!-- Announcement Bar -->
+    <div
+      class="bg-crochet-rose text-white text-center py-2 text-sm font-bold tracking-wide"
+    >
+      FRETE GRÁTIS PARA COMPRAS ACIMA DE R$ 299 | ENVIAMOS PARA TODO O BRASIL
+      🧶
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <!-- Logo -->
+          <div class="text-center md:text-left mb-4 md:mb-0">
+            <a href="#" class="group">
+              <h1 class="text-3xl font-bold text-crochet-brown">
+                Helena <span class="text-crochet-rose">Tramas</span>
+              </h1>
+              <p
+                class="text-xs tracking-[0.3em] uppercase text-gray-500 group-hover:text-crochet-sage transition-colors"
+              >
+                Handmade Luxury
+              </p>
+            </a>
+          </div>
+
+          <!-- Nav -->
+          <nav class="space-x-8 mb-4 md:mb-0 hidden md:block">
+            <a
+              href="#home"
+              class="text-gray-600 hover:text-crochet-terra transition-colors uppercase text-sm tracking-wider font-bold"
+              >Início</a
+            >
+            <a
+              href="#collections"
+              class="text-gray-600 hover:text-crochet-terra transition-colors uppercase text-sm tracking-wider font-bold"
+              >Coleções</a
+            >
+            <a
+              href="#artist"
+              class="text-gray-600 hover:text-crochet-terra transition-colors uppercase text-sm tracking-wider font-bold"
+              >A Artista</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 hover:text-crochet-terra transition-colors uppercase text-sm tracking-wider font-bold"
+              >Contato</a
+            >
+          </nav>
+
+          <!-- Icons -->
+          <div class="flex items-center space-x-6 text-crochet-brown">
+            <button class="hover:text-crochet-rose transition-colors">
+              <i class="fas fa-search text-xl"></i>
+            </button>
+            <button class="hover:text-crochet-rose transition-colors">
+              <i class="far fa-heart text-xl"></i>
+            </button>
+            <button class="hover:text-crochet-rose transition-colors relative">
+              <i class="fas fa-shopping-bag text-xl"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-crochet-sage text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-wool-beige py-20 lg:py-32">
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2 text-center lg:text-left">
+            <span
+              class="font-signature text-3xl md:text-5xl text-crochet-terra mb-4 block"
+              >Feito à mão, com o coração.</span
+            >
+            <h2
+              class="text-5xl md:text-7xl font-bold text-crochet-brown mb-6 leading-tight"
+            >
+              A Arte do <br /><span class="italic text-crochet-rose"
+                >Crochê Moderno</span
+              >
+            </h2>
+            <p
+              class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+            >
+              Peças exclusivas, criadas ponto a ponto pela renomada artista
+              Helena Costa. Vista a elegância do artesanal e traga aconchego
+              para seu lar.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <button
+                class="bg-crochet-brown text-white hover:bg-crochet-terra px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                Ver Coleção Nova
+              </button>
+              <button
+                class="border-2 border-crochet-brown text-crochet-brown hover:bg-crochet-brown hover:text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all"
+              >
+                Encomendas Personalizadas
+              </button>
+            </div>
+          </div>
+          <div class="lg:w-1/2 relative">
+            <div
+              class="absolute inset-0 bg-crochet-sage/20 rounded-full blur-3xl transform -translate-x-10 translate-y-10"
+            ></div>
+            <img
+              src="https://placehold.co/600x700/e6dace/5d4037?text=Artes%C3%A3+Tecendo"
+              alt="Helena Crochetando"
+              class="relative rounded-t-full rounded-b-3xl shadow-2xl w-full max-w-md mx-auto object-cover z-10 border-8 border-white"
+            />
+            <!-- Badge -->
+            <div
+              class="absolute bottom-10 -left-4 lg:-left-10 bg-white p-6 rounded-full shadow-xl z-20 animate-bounce"
+              style="animation-duration: 3s"
+            >
+              <div
+                class="border-2 border-dashed border-crochet-rose rounded-full p-4 text-center w-32 h-32 flex flex-col items-center justify-center"
+              >
+                <span class="font-bold text-3xl text-crochet-brown">15+</span>
+                <span class="text-xs uppercase tracking-wide text-gray-500"
+                  >Anos de<br />Tradição</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories / Vitrine -->
+    <section id="collections" class="py-20 yarn-texture">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="text-crochet-sage font-bold uppercase tracking-widest"
+            >Nossas Categorias</span
+          >
+          <h2 class="text-4xl text-crochet-brown mt-2">
+            Um universo de possibilidades
+          </h2>
+          <div class="w-24 h-1 bg-crochet-rose mx-auto mt-6"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <!-- Cat 1 -->
+          <a href="#" class="group text-center">
+            <div
+              class="overflow-hidden rounded-full aspect-square mb-4 border-4 border-white shadow-md group-hover:border-crochet-rose transition-all"
+            >
+              <img
+                src="https://placehold.co/300x300/d4a3a3/ffffff?text=Moda"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3
+              class="font-bold text-gray-700 group-hover:text-crochet-terra uppercase text-sm tracking-wider"
+            >
+              Moda & Vestuário
+            </h3>
+          </a>
+
+          <!-- Cat 2 -->
+          <a href="#" class="group text-center">
+            <div
+              class="overflow-hidden rounded-full aspect-square mb-4 border-4 border-white shadow-md group-hover:border-crochet-rose transition-all"
+            >
+              <img
+                src="https://placehold.co/300x300/9caf88/ffffff?text=Amigurumi"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3
+              class="font-bold text-gray-700 group-hover:text-crochet-terra uppercase text-sm tracking-wider"
+            >
+              Amigurumis
+            </h3>
+          </a>
+
+          <!-- Cat 3 -->
+          <a href="#" class="group text-center">
+            <div
+              class="overflow-hidden rounded-full aspect-square mb-4 border-4 border-white shadow-md group-hover:border-crochet-rose transition-all"
+            >
+              <img
+                src="https://placehold.co/300x300/c27ba0/ffffff?text=Decora%C3%A7%C3%A3o"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3
+              class="font-bold text-gray-700 group-hover:text-crochet-terra uppercase text-sm tracking-wider"
+            >
+              Decoração
+            </h3>
+          </a>
+
+          <!-- Cat 4 -->
+          <a href="#" class="group text-center">
+            <div
+              class="overflow-hidden rounded-full aspect-square mb-4 border-4 border-white shadow-md group-hover:border-crochet-rose transition-all"
+            >
+              <img
+                src="https://placehold.co/300x300/e6dace/555555?text=Acess%C3%B3rios"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3
+              class="font-bold text-gray-700 group-hover:text-crochet-terra uppercase text-sm tracking-wider"
+            >
+              Acessórios
+            </h3>
+          </a>
+
+          <!-- Cat 5 -->
+          <a href="#" class="group text-center">
+            <div
+              class="overflow-hidden rounded-full aspect-square mb-4 border-4 border-white shadow-md group-hover:border-crochet-rose transition-all"
+            >
+              <img
+                src="https://placehold.co/300x300/5d4037/ffffff?text=Mesa+Posta"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3
+              class="font-bold text-gray-700 group-hover:text-crochet-terra uppercase text-sm tracking-wider"
+            >
+              Mesa Posta
+            </h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bestsellers -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-end mb-12">
+          <div>
+            <h2 class="text-4xl text-crochet-brown mb-2 font-bold">
+              Destaques da Estação
+            </h2>
+            <p class="text-gray-500 italic">As peças mais amadas pelos nossos clientes</p>
+          </div>
+          <a
+            href="#"
+            class="hidden md:inline-block border-b-2 border-crochet-terra text-crochet-terra font-bold hover:text-crochet-brown hover:border-crochet-brown transition-colors uppercase text-sm pb-1"
+          >
+            Ver Loja Completa
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Product Card 1 -->
+          <div class="group">
+             <div class="relative bg-wool-cream overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
+                <span class="absolute top-4 left-4 bg-crochet-sage text-white text-xs font-bold px-3 py-1 uppercase tracking-wide z-10">Novo</span>
+                <img src="https://placehold.co/400x533/c27ba0/ffffff?text=Sa%C3%ADda+Praia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <!-- Hover Action -->
+                <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <button class="w-full bg-white text-crochet-brown font-bold py-3 rounded-xl shadow-lg hover:bg-crochet-brown hover:text-white transition-colors">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+             </div>
+             <a href="#"><h3 class="font-bold text-lg text-gray-800 group-hover:text-crochet-terra mb-1">Saída de Praia Boho</h3></a>
+             <p class="text-gray-500 text-sm mb-2">Vestuário</p>
+             <p class="font-bold text-crochet-brown text-xl">R$ 289,90</p>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="group">
+            <div class="relative bg-wool-cream overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
+               <img src="https://placehold.co/400x533/9caf88/ffffff?text=Jogo+Americano" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+               <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                   <button class="w-full bg-white text-crochet-brown font-bold py-3 rounded-xl shadow-lg hover:bg-crochet-brown hover:text-white transition-colors">
+                       Adicionar ao Carrinho
+                   </button>
+               </div>
+            </div>
+            <a href="#"><h3 class="font-bold text-lg text-gray-800 group-hover:text-crochet-terra mb-1">Kit Americano (4un)</h3></a>
+            <p class="text-gray-500 text-sm mb-2">Mesa Posta</p>
+            <p class="font-bold text-crochet-brown text-xl">R$ 159,90</p>
+         </div>
+
+         <!-- Product Card 3 -->
+         <div class="group">
+            <div class="relative bg-wool-cream overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
+                <span class="absolute top-4 right-4 bg-crochet-rose text-white text-xs font-bold px-3 py-1 uppercase tracking-wide z-10">-20% OFF</span>
+               <img src="https://placehold.co/400x533/e6dace/5d4037?text=Urso+Teddy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+               <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                   <button class="w-full bg-white text-crochet-brown font-bold py-3 rounded-xl shadow-lg hover:bg-crochet-brown hover:text-white transition-colors">
+                       Adicionar ao Carrinho
+                   </button>
+               </div>
+            </div>
+            <a href="#"><h3 class="font-bold text-lg text-gray-800 group-hover:text-crochet-terra mb-1">Teddy Bear Vintage</h3></a>
+            <p class="text-gray-500 text-sm mb-2">Amigurumi</p>
+            <div class="flex items-center gap-2">
+                <p class="font-bold text-crochet-brown text-xl">R$ 119,90</p>
+                <p class="text-gray-400 text-sm line-through">R$ 149,90</p>
+            </div>
+         </div>
+
+         <!-- Product Card 4 -->
+         <div class="group">
+            <div class="relative bg-wool-cream overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
+               <img src="https://placehold.co/400x533/5d4037/ffffff?text=Pantufa+Luxo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+               <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                   <button class="w-full bg-white text-crochet-brown font-bold py-3 rounded-xl shadow-lg hover:bg-crochet-brown hover:text-white transition-colors">
+                       Adicionar ao Carrinho
+                   </button>
+               </div>
+            </div>
+            <a href="#"><h3 class="font-bold text-lg text-gray-800 group-hover:text-crochet-terra mb-1">Pantufa Comfort</h3></a>
+            <p class="text-gray-500 text-sm mb-2">Sapatos</p>
+            <p class="font-bold text-crochet-brown text-xl">R$ 89,90</p>
+         </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Artist Section -->
+    <section id="artist" class="py-24 bg-wool-beige">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/2 relative bg-gray-200 min-h-[400px]">
+                    <img src="https://placehold.co/800x800/d4a3a3/ffffff?text=Foto+Helena" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                    <span class="font-signature text-4xl text-crochet-rose mb-2">Helena Costa</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-crochet-brown mb-6">A Alma por trás dos fios</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        Comecei a crochetar aos 8 anos com minha avó, e o que era brincadeira virou minha assinatura de vida. Hoje, 
+                        reconhecida nacionalmente por trazer o crochê para a alta moda e decoração contemporânea, dedico cada ponto 
+                        à criação de peças que contam histórias.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed italic border-l-4 border-crochet-sage pl-4">
+                        "O crochê não é apenas tecido, é tempo materializado em carinho."
+                    </p>
+                    
+                    <div class="flex gap-4">
+                        <a href="#" class="text-crochet-brown hover:text-crochet-terra text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-crochet-brown hover:text-crochet-terra text-2xl transition-colors"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="text-crochet-brown hover:text-crochet-terra text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 yarn-texture">
+        <div class="container mx-auto px-6">
+            <h2 class="text-center text-4xl font-bold text-crochet-brown mb-16">Quem compra, se encanta</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg relative mt-6">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-crochet-rose rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6 text-center mt-4">"A saída de praia é a coisa mais linda que já vi! O acabamento é perfeito, dá pra ver que foi feito por quem entende muito."</p>
+                    <div class="flex items-center justify-center gap-3">
+                        <img src="https://i.pravatar.cc/150?img=1" class="w-10 h-10 rounded-full">
+                        <span class="font-bold text-crochet-brown">Amanda S.</span>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg relative mt-6">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-crochet-sage rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6 text-center mt-4">"Comprei o jogo americano para presentear minha mãe e ela chorou de emoção. A embalagem também é um show à parte!"</p>
+                    <div class="flex items-center justify-center gap-3">
+                        <img src="https://i.pravatar.cc/150?img=5" class="w-10 h-10 rounded-full">
+                        <span class="font-bold text-crochet-brown">Beatriz L.</span>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg relative mt-6">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-crochet-terra rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6 text-center mt-4">"As pantufas são extremamente confortáveis e quentinhas. Chegou super rápido aqui no sul. Recomendo demais!"</p>
+                    <div class="flex items-center justify-center gap-3">
+                        <img src="https://i.pravatar.cc/150?img=12" class="w-10 h-10 rounded-full">
+                        <span class="font-bold text-crochet-brown">Carlos M.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment & Shipping Info -->
+    <section class="py-12 bg-wool-cream border-t border-b border-crochet-beige">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 text-center text-gray-700">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-credit-card text-3xl text-crochet-terra mb-3"></i>
+                    <h4 class="font-bold mb-1">Parcele em até 10x</h4>
+                    <p class="text-sm">Sem juros no cartão</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-shipping-fast text-3xl text-crochet-sage mb-3"></i>
+                    <h4 class="font-bold mb-1">Entrega Rápida</h4>
+                    <p class="text-sm">Rastreamento online</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-qrcode text-3xl text-crochet-rose mb-3"></i>
+                    <h4 class="font-bold mb-1">5% OFF no PIX</h4>
+                    <p class="text-sm">Pagamento instantâneo</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-shield-alt text-3xl text-crochet-brown mb-3"></i>
+                    <h4 class="font-bold mb-1">Compra Segura</h4>
+                    <p class="text-sm">Seus dados protegidos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-crochet-brown text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-4">Entre para o nosso Clube do Crochê</h2>
+            <p class="text-wool-beige mb-8">Receba novidades, dicas de conservação e cupons exclusivos.</p>
+            <div class="max-w-xl mx-auto flex gap-2">
+                <input type="email" placeholder="Seu melhor email" class="flex-1 px-6 py-4 rounded-full border-none focus:ring-2 focus:ring-crochet-rose outline-none">
+                <button class="bg-crochet-rose hover:bg-crochet-terra text-white font-bold px-8 py-4 rounded-full transition-colors uppercase tracking-wider text-sm">Inscrever</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 pt-16 pb-8 text-gray-600 text-sm">
+        <div class="container mx-auto px-6 mb-12">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                   <h1 class="text-2xl font-bold text-crochet-brown mb-4 font-serif">Helena Tramas</h1>
+                   <p class="mb-4">Transformando fios em arte e sonhos em realidade. Cada peça carrega uma história única.</p>
+                   <div class="flex gap-4 text-xl">
+                       <i class="fab fa-facebook hover:text-crochet-rose cursor-pointer"></i>
+                       <i class="fab fa-instagram hover:text-crochet-rose cursor-pointer"></i>
+                       <i class="fab fa-tiktok hover:text-crochet-rose cursor-pointer"></i>
+                   </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-4 uppercase tracking-wider">Produtos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crochet-terra">Vestuário</a></li>
+                        <li><a href="#" class="hover:text-crochet-terra">Decoração</a></li>
+                        <li><a href="#" class="hover:text-crochet-terra">Para Bebês</a></li>
+                        <li><a href="#" class="hover:text-crochet-terra">Presentes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-4 uppercase tracking-wider">Ajuda</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crochet-terra">Acompanhar Pedido</a></li>
+                        <li><a href="#" class="hover:text-crochet-terra">Trocas e Devoluções</a></li>
+                        <li><a href="#" class="hover:text-crochet-terra">Tabela de Medidas</a></li>
+                        <li><a href="#" class="hover:text-crochet-terra">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-4 uppercase tracking-wider">Formas de Pagamento</h4>
+                    <div class="grid grid-cols-4 gap-2 text-2xl mb-4">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                    <p>Ateliê Helena Tramas<br>CNPJ: 00.000.000/0001-00<br>Rua dos Fios, 123 - São Paulo/SP</p>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-200 pt-8 text-center">
+            <p>&copy; 2026 Helena Tramas. Todos os direitos reservados. Design feito com <i class="fas fa-heart text-red-400"></i></p>
+        </div>
+    </footer>
+  </body>
+</html>

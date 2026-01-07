@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Dreams Festival - A Maior Rave do Brasil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Exo+2:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-neon-pink: #ff00ff;
+        --color-neon-cyan: #00ffff;
+        --color-neon-green: #00ff00;
+        --color-neon-purple: #9d00ff;
+      }
+
+      body {
+        font-family: "Exo 2", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-display {
+        font-family: "Bungee", sans-serif;
+      }
+
+      @keyframes neon-glow {
+        0%,
+        100% {
+          text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+        }
+        50% {
+          text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+        }
+      }
+
+      @keyframes pulse-neon {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .neon-text {
+        animation: neon-glow 3s ease-in-out infinite;
+      }
+
+      .neon-box {
+        animation: pulse-neon 2s ease-in-out infinite;
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .gradient-neon {
+        background: linear-gradient(135deg, #ff00ff, #00ffff, #00ff00);
+        background-size: 200% 200%;
+        animation: gradient-shift 5s ease infinite;
+      }
+
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .glass-effect {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 glass-effect transition-all duration-300"
+      id="navbar"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+          <div class="flex items-center space-x-2">
+            <i
+              class="fas fa-music text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500"
+            ></i>
+            <span class="text-2xl font-display font-black neon-text"
+              >NEON DREAMS</span
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Início</a
+            >
+            <a
+              href="#lineup"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Line-up</a
+            >
+            <a
+              href="#tickets"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Ingressos</a
+            >
+            <a
+              href="#gallery"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Galeria</a
+            >
+            <a
+              href="#map"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Mapa</a
+            >
+            <a
+              href="#merch"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Merch</a
+            >
+            <a
+              href="#tips"
+              class="hover:text-cyan-400 transition-colors font-semibold"
+              >Dicas</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-black/90">
+        <div class="container mx-auto px-4 py-4 space-y-4">
+          <a href="#home" class="block hover:text-cyan-400 transition-colors"
+            >Início</a
+          >
+          <a href="#lineup" class="block hover:text-cyan-400 transition-colors"
+            >Line-up</a
+          >
+          <a href="#tickets" class="block hover:text-cyan-400 transition-colors"
+            >Ingressos</a
+          >
+          <a href="#gallery" class="block hover:text-cyan-400 transition-colors"
+            >Galeria</a
+          >
+          <a href="#map" class="block hover:text-cyan-400 transition-colors"
+            >Mapa</a
+          >
+          <a href="#merch" class="block hover:text-cyan-400 transition-colors"
+            >Merch</a
+          >
+          <a href="#tips" class="block hover:text-cyan-400 transition-colors"
+            >Dicas</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style="
+        background: linear-gradient(
+          135deg,
+          #000000 0%,
+          #1a0033 50%,
+          #000000 100%
+        );
+      "
+    >
+      <!-- Animated Background -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-pink-500 rounded-full blur-3xl animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 w-96 h-96 bg-green-500 rounded-full blur-3xl animate-pulse"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 text-center z-10 relative">
+        <div class="animate-float">
+          <h1
+            class="text-7xl md:text-9xl font-display font-black mb-6 neon-text uppercase tracking-tight"
+          >
+            NEON DREAMS
+          </h1>
+          <p class="text-3xl md:text-5xl mb-4 font-semibold text-cyan-400">
+            Festival de Música Eletrônica
+          </p>
+          <p class="text-xl md:text-2xl mb-8 text-gray-300">
+            15, 16 e 17 de Dezembro de 2024
+          </p>
+          <p class="text-lg md:text-xl mb-12 text-pink-400">
+            <i class="fas fa-map-marker-alt mr-2"></i>São Paulo, SP - Autódromo
+            de Interlagos
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#tickets"
+              class="gradient-neon hover:scale-105 px-10 py-5 rounded-full text-xl font-bold transition-all transform text-black"
+            >
+              <i class="fas fa-ticket-alt mr-2"></i>Comprar Ingressos
+            </a>
+            <a
+              href="#lineup"
+              class="bg-transparent border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black px-10 py-5 rounded-full text-xl font-bold transition-all transform hover:scale-105"
+            >
+              <i class="fas fa-music mr-2"></i>Ver Line-up
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <a href="#lineup">
+          <i class="fas fa-chevron-down text-3xl text-cyan-400"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Line-up Section -->
+    <section
+      id="lineup"
+      class="py-20 bg-gradient-to-b from-black via-purple-900/20 to-black"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            LINE-UP
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="mb-16">
+          <h3
+            class="text-4xl font-display font-bold mb-8 text-pink-400 text-center"
+          >
+            <i class="fas fa-calendar-day mr-2"></i>Dia 1 - Sexta-feira (15/12)
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gradient-to-br from-pink-900/50 to-purple-900/50 rounded-lg p-6 border border-pink-500/30 hover:border-pink-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-pink-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">DJ Neon Pulse</h4>
+                  <p class="text-cyan-400">23:00 - 01:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">House & Techno</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 rounded-lg p-6 border border-cyan-500/30 hover:border-cyan-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-cyan-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Electric Storm</h4>
+                  <p class="text-green-400">21:00 - 23:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Progressive Trance</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-green-900/50 to-emerald-900/50 rounded-lg p-6 border border-green-500/30 hover:border-green-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-green-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Bass Master</h4>
+                  <p class="text-pink-400">19:00 - 21:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Dubstep & Bass</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="mb-16">
+          <h3
+            class="text-4xl font-display font-bold mb-8 text-cyan-400 text-center"
+          >
+            <i class="fas fa-calendar-day mr-2"></i>Dia 2 - Sábado (16/12)
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gradient-to-br from-pink-900/50 to-purple-900/50 rounded-lg p-6 border border-pink-500/30 hover:border-pink-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-pink-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Techno Titan</h4>
+                  <p class="text-cyan-400">00:00 - 02:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Hard Techno</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 rounded-lg p-6 border border-cyan-500/30 hover:border-cyan-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-cyan-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Trance Legend</h4>
+                  <p class="text-green-400">22:00 - 00:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Uplifting Trance</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-green-900/50 to-emerald-900/50 rounded-lg p-6 border border-green-500/30 hover:border-green-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-green-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Future Bass</h4>
+                  <p class="text-pink-400">20:00 - 22:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Future Bass & Trap</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div>
+          <h3
+            class="text-4xl font-display font-bold mb-8 text-green-400 text-center"
+          >
+            <i class="fas fa-calendar-day mr-2"></i>Dia 3 - Domingo (17/12)
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gradient-to-br from-pink-900/50 to-purple-900/50 rounded-lg p-6 border border-pink-500/30 hover:border-pink-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-pink-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Closing Act</h4>
+                  <p class="text-cyan-400">22:00 - 00:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">All Genres Mix</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 rounded-lg p-6 border border-cyan-500/30 hover:border-cyan-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-cyan-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Sunset Session</h4>
+                  <p class="text-green-400">18:00 - 20:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Chill & Deep House</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-green-900/50 to-emerald-900/50 rounded-lg p-6 border border-green-500/30 hover:border-green-500 transition-all group"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=100"
+                  alt="DJ"
+                  class="w-16 h-16 rounded-full object-cover border-2 border-green-500"
+                />
+                <div>
+                  <h4 class="text-xl font-bold">Finale Show</h4>
+                  <p class="text-pink-400">20:00 - 22:00</p>
+                </div>
+              </div>
+              <p class="text-gray-300">Big Room & Festival</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tickets Section -->
+    <section id="tickets" class="py-20 bg-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            INGRESSOS
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Single Day Ticket -->
+          <div
+            class="bg-gradient-to-br from-pink-900/30 to-purple-900/30 rounded-lg p-8 border-2 border-pink-500/50 hover:border-pink-500 transition-all transform hover:scale-105"
+          >
+            <div class="text-center mb-6">
+              <h3 class="text-3xl font-display font-bold mb-2 text-pink-400">
+                1 DIA
+              </h3>
+              <p class="text-gray-400">Acesso para um dia</p>
+            </div>
+            <div class="text-center mb-6">
+              <span class="text-5xl font-black text-cyan-400">R$ 150</span>
+              <p class="text-sm text-gray-500 line-through mt-2">R$ 200</p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Acesso a todas
+                as áreas
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>1 dia de
+                festival
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Reentrada
+                permitida
+              </li>
+            </ul>
+            <button
+              class="w-full bg-pink-500 hover:bg-pink-600 py-4 rounded-lg font-bold text-lg transition-all"
+            >
+              Comprar Agora
+            </button>
+          </div>
+
+          <!-- 3 Days Ticket -->
+          <div
+            class="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-lg p-8 border-2 border-cyan-500 neon-box transform hover:scale-105 transition-all relative"
+          >
+            <div
+              class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-sm font-bold"
+            >
+              MAIS POPULAR
+            </div>
+            <div class="text-center mb-6">
+              <h3 class="text-3xl font-display font-bold mb-2 text-cyan-400">
+                3 DIAS
+              </h3>
+              <p class="text-gray-400">Acesso completo</p>
+            </div>
+            <div class="text-center mb-6">
+              <span class="text-5xl font-black text-green-400">R$ 350</span>
+              <p class="text-sm text-gray-500 line-through mt-2">R$ 600</p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Acesso a todas
+                as áreas
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>3 dias de
+                festival
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Reentrada
+                ilimitada
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Área VIP
+                incluída
+              </li>
+            </ul>
+            <button
+              class="w-full bg-cyan-500 hover:bg-cyan-600 py-4 rounded-lg font-bold text-lg transition-all"
+            >
+              Comprar Agora
+            </button>
+          </div>
+
+          <!-- VIP Ticket -->
+          <div
+            class="bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-lg p-8 border-2 border-green-500/50 hover:border-green-500 transition-all transform hover:scale-105"
+          >
+            <div class="text-center mb-6">
+              <h3 class="text-3xl font-display font-bold mb-2 text-green-400">
+                VIP
+              </h3>
+              <p class="text-gray-400">Experiência premium</p>
+            </div>
+            <div class="text-center mb-6">
+              <span class="text-5xl font-black text-pink-400">R$ 600</span>
+              <p class="text-sm text-gray-500 line-through mt-2">R$ 900</p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Tudo do 3 dias
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Área VIP
+                exclusiva
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Open bar
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-green-400 mr-2"></i>Estacionamento
+              </li>
+            </ul>
+            <button
+              class="w-full bg-green-500 hover:bg-green-600 py-4 rounded-lg font-bold text-lg transition-all"
+            >
+              Comprar Agora
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section - Past Festivals -->
+    <section
+      id="gallery"
+      class="py-20 bg-gradient-to-b from-black via-purple-900/20 to-black"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            FESTIVAIS ANTERIORES
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+          <p class="text-gray-400 mt-4 text-lg">
+            Reviva os melhores momentos das edições passadas
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="relative overflow-hidden rounded-lg group cursor-pointer">
+            <img
+              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+              alt="Festival 2023"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-bold mb-2">Neon Dreams 2023</h3>
+                <p class="text-cyan-400">50.000 pessoas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-lg group cursor-pointer">
+            <img
+              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600"
+              alt="Festival 2022"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-bold mb-2">Neon Dreams 2022</h3>
+                <p class="text-pink-400">35.000 pessoas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-lg group cursor-pointer">
+            <img
+              src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+              alt="Festival 2021"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-bold mb-2">Neon Dreams 2021</h3>
+                <p class="text-green-400">25.000 pessoas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-lg group cursor-pointer">
+            <img
+              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+              alt="Festival"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-bold mb-2">Momentos Épicos</h3>
+                <p class="text-cyan-400">Memórias inesquecíveis</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-lg group cursor-pointer">
+            <img
+              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600"
+              alt="Festival"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-bold mb-2">Palcos Incríveis</h3>
+                <p class="text-pink-400">Produção de outro mundo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-lg group cursor-pointer">
+            <img
+              src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600"
+              alt="Festival"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-bold mb-2">Crowd Energético</h3>
+                <p class="text-green-400">Vibes incríveis</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="py-20 bg-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            MAPA DO FESTIVAL
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Festival Map -->
+          <div>
+            <h3 class="text-3xl font-display font-bold mb-6 text-cyan-400">
+              Layout do Evento
+            </h3>
+            <div
+              class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-lg p-8 border border-cyan-500/30"
+            >
+              <div
+                class="aspect-square bg-gray-900 rounded-lg flex items-center justify-center relative overflow-hidden"
+              >
+                <!-- Simplified Map -->
+                <div class="absolute inset-4 grid grid-cols-3 gap-4">
+                  <div
+                    class="bg-pink-500/20 border border-pink-500 rounded-lg p-4 flex flex-col items-center justify-center"
+                  >
+                    <i class="fas fa-music text-3xl text-pink-400 mb-2"></i>
+                    <span class="text-xs font-bold">Palco 1</span>
+                  </div>
+                  <div
+                    class="bg-cyan-500/20 border border-cyan-500 rounded-lg p-4 flex flex-col items-center justify-center"
+                  >
+                    <i class="fas fa-utensils text-3xl text-cyan-400 mb-2"></i>
+                    <span class="text-xs font-bold">Food Court</span>
+                  </div>
+                  <div
+                    class="bg-green-500/20 border border-green-500 rounded-lg p-4 flex flex-col items-center justify-center"
+                  >
+                    <i class="fas fa-music text-3xl text-green-400 mb-2"></i>
+                    <span class="text-xs font-bold">Palco 2</span>
+                  </div>
+                  <div
+                    class="bg-purple-500/20 border border-purple-500 rounded-lg p-4 flex flex-col items-center justify-center"
+                  >
+                    <i class="fas fa-tshirt text-3xl text-purple-400 mb-2"></i>
+                    <span class="text-xs font-bold">Merch</span>
+                  </div>
+                  <div
+                    class="bg-yellow-500/20 border border-yellow-500 rounded-lg p-4 flex flex-col items-center justify-center"
+                  >
+                    <i
+                      class="fas fa-glass-water text-3xl text-yellow-400 mb-2"
+                    ></i>
+                    <span class="text-xs font-bold">Bares</span>
+                  </div>
+                  <div
+                    class="bg-red-500/20 border border-red-500 rounded-lg p-4 flex flex-col items-center justify-center"
+                  >
+                    <i class="fas fa-music text-3xl text-red-400 mb-2"></i>
+                    <span class="text-xs font-bold">Palco 3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Food & Drinks Map -->
+          <div>
+            <h3 class="text-3xl font-display font-bold mb-6 text-pink-400">
+              Comida & Bebidas
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="bg-gradient-to-r from-pink-900/30 to-purple-900/30 rounded-lg p-6 border border-pink-500/30"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-pink-500/20 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-hamburger text-2xl text-pink-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1">Burger Zone</h4>
+                    <p class="text-gray-400 text-sm">
+                      Hambúrgueres artesanais e batatas
+                    </p>
+                    <p class="text-cyan-400 text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Área Central
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-lg p-6 border border-cyan-500/30"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-cyan-500/20 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-pizza-slice text-2xl text-cyan-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1">Pizza Corner</h4>
+                    <p class="text-gray-400 text-sm">Pizzas e massas frescas</p>
+                    <p class="text-pink-400 text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Próximo ao Palco
+                      1
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-lg p-6 border border-green-500/30"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-cocktail text-2xl text-green-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1">Neon Bar</h4>
+                    <p class="text-gray-400 text-sm">
+                      Bebidas especiais e drinks temáticos
+                    </p>
+                    <p class="text-yellow-400 text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Múltiplas
+                      localizações
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-lg p-6 border border-purple-500/30"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-ice-cream text-2xl text-purple-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1">Sweet Station</h4>
+                    <p class="text-gray-400 text-sm">
+                      Doces, sorvetes e sobremesas
+                    </p>
+                    <p class="text-pink-400 text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Área VIP
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Merch Section -->
+    <section
+      id="merch"
+      class="py-20 bg-gradient-to-b from-black via-purple-900/20 to-black"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            MERCHANDISING
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+          <p class="text-gray-400 mt-4 text-lg">
+            Leve a experiência Neon Dreams para casa
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Product 1 -->
+          <div
+            class="bg-gradient-to-br from-pink-900/30 to-purple-900/30 rounded-lg overflow-hidden border border-pink-500/30 hover:border-pink-500 transition-all group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"
+                alt="Camiseta"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+              <div
+                class="absolute top-4 right-4 bg-green-500 text-black px-3 py-1 rounded-full text-xs font-bold"
+              >
+                NOVO
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Camiseta Neon Dreams</h3>
+              <p class="text-gray-400 text-sm mb-4">
+                Camiseta oficial do festival
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-cyan-400">R$ 89</span>
+                <button
+                  class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-lg font-bold transition-all"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div
+            class="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-lg overflow-hidden border border-cyan-500/30 hover:border-cyan-500 transition-all group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"
+                alt="Moletom"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Moletom Premium</h3>
+              <p class="text-gray-400 text-sm mb-4">Moletom com capuz</p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-green-400">R$ 149</span>
+                <button
+                  class="bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-lg font-bold transition-all"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div
+            class="bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-lg overflow-hidden border border-green-500/30 hover:border-green-500 transition-all group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400"
+                alt="Boné"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Boné Neon</h3>
+              <p class="text-gray-400 text-sm mb-4">Boné ajustável</p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-pink-400">R$ 59</span>
+                <button
+                  class="bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg font-bold transition-all"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div
+            class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-lg overflow-hidden border border-purple-500/30 hover:border-purple-500 transition-all group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400"
+                alt="Tênis"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Kit Completo</h3>
+              <p class="text-gray-400 text-sm mb-4">
+                Camiseta + Moletom + Boné
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-yellow-400">R$ 249</span>
+                <button
+                  class="bg-purple-500 hover:bg-purple-600 px-6 py-2 rounded-lg font-bold transition-all"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="py-20 bg-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            DICAS IMPORTANTES
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="bg-gradient-to-br from-pink-900/30 to-purple-900/30 rounded-lg p-6 border border-pink-500/30"
+          >
+            <div class="text-4xl mb-4 text-pink-400">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Documentação</h3>
+            <p class="text-gray-300">
+              Traga documento com foto original. Cópias não são aceitas.
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-lg p-6 border border-cyan-500/30"
+          >
+            <div class="text-4xl mb-4 text-cyan-400">
+              <i class="fas fa-ban"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Itens Proibidos</h3>
+            <p class="text-gray-300">
+              Armas, drogas, vidros e objetos cortantes não são permitidos.
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-lg p-6 border border-green-500/30"
+          >
+            <div class="text-4xl mb-4 text-green-400">
+              <i class="fas fa-tint"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Hidratação</h3>
+            <p class="text-gray-300">
+              Beba água regularmente. Postos de água disponíveis em todo o
+              evento.
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-lg p-6 border border-purple-500/30"
+          >
+            <div class="text-4xl mb-4 text-purple-400">
+              <i class="fas fa-car"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Estacionamento</h3>
+            <p class="text-gray-300">
+              Estacionamento disponível. Chegue cedo para garantir vaga.
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-yellow-900/30 to-orange-900/30 rounded-lg p-6 border border-yellow-500/30"
+          >
+            <div class="text-4xl mb-4 text-yellow-400">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Carregadores</h3>
+            <p class="text-gray-300">
+              Postos de carregamento disponíveis. Traga seu carregador.
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-red-900/30 to-pink-900/30 rounded-lg p-6 border border-red-500/30"
+          >
+            <div class="text-4xl mb-4 text-red-400">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">PLUR</h3>
+            <p class="text-gray-300">
+              Respeite o próximo. PLUR: Peace, Love, Unity, Respect.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section
+      class="py-20 bg-gradient-to-b from-black via-purple-900/20 to-black"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display font-black mb-4 neon-text">
+            O QUE DIZEM
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500 mx-auto"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-gradient-to-br from-pink-900/30 to-purple-900/30 rounded-lg p-6 border border-pink-500/30"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"
+                alt="User"
+                class="w-12 h-12 rounded-full mr-4 border-2 border-pink-500"
+              />
+              <div>
+                <h4 class="font-bold">Maria Silva</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-300">
+              "Melhor festival que já fui! Produção impecável e line-up
+              incrível. Já comprei meu ingresso para 2024!"
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-lg p-6 border border-cyan-500/30"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"
+                alt="User"
+                class="w-12 h-12 rounded-full mr-4 border-2 border-cyan-500"
+              />
+              <div>
+                <h4 class="font-bold">João Santos</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-300">
+              "Energia única! Os palcos são de outro mundo e o som está
+              perfeito. Recomendo 100%!"
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-lg p-6 border border-green-500/30"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100"
+                alt="User"
+                class="w-12 h-12 rounded-full mr-4 border-2 border-green-500"
+              />
+              <div>
+                <h4 class="font-bold">Ana Costa</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-300">
+              "Experiência inesquecível! Já estou contando os dias para a
+              próxima edição. PLUR!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-pink-500/30 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i
+                class="fas fa-music text-2xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-500 to-green-500"
+              ></i>
+              <span class="text-xl font-display font-black neon-text"
+                >NEON DREAMS</span
+              >
+            </div>
+            <p class="text-gray-400 text-sm">
+              A maior experiência de música eletrônica do Brasil.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Links</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#lineup" class="hover:text-cyan-400">Line-up</a></li>
+              <li>
+                <a href="#tickets" class="hover:text-cyan-400">Ingressos</a>
+              </li>
+              <li>
+                <a href="#gallery" class="hover:text-cyan-400">Galeria</a>
+              </li>
+              <li>
+                <a href="#merch" class="hover:text-cyan-400">Merchandising</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Informações</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#tips" class="hover:text-cyan-400">Dicas</a></li>
+              <li><a href="#map" class="hover:text-cyan-400">Mapa</a></li>
+              <li><a href="#" class="hover:text-cyan-400">FAQ</a></li>
+              <li><a href="#" class="hover:text-cyan-400">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Redes Sociais</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-pink-500/20 hover:bg-pink-500 rounded-full flex items-center justify-center transition-all"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-cyan-500/20 hover:bg-cyan-500 rounded-full flex items-center justify-center transition-all"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-green-500/20 hover:bg-green-500 rounded-full flex items-center justify-center transition-all"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-purple-500/20 hover:bg-purple-500 rounded-full flex items-center justify-center transition-all"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-pink-500/30 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>&copy; 2024 Neon Dreams Festival. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("bg-black/90");
+        } else {
+          navbar.classList.remove("bg-black/90");
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

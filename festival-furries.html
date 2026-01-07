@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FurryCon Brasil - O Maior Encontro Furry do País</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-furry-orange: #ff6b35;
+        --color-furry-yellow: #ffd23f;
+        --color-furry-pink: #ff6b9d;
+        --color-furry-blue: #4ecdc4;
+        --color-furry-purple: #a78bfa;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-display {
+        font-family: "Fredoka One", sans-serif;
+      }
+
+      @keyframes bounce-gentle {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes pulse-soft {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(255, 107, 53, 0.7);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .animate-bounce-gentle {
+        animation: bounce-gentle 2s ease-in-out infinite;
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .pulse-soft {
+        animation: pulse-soft 2s ease-in-out infinite;
+      }
+
+      .gradient-furry {
+        background: linear-gradient(135deg, #ff6b35, #ffd23f, #ff6b9d, #4ecdc4);
+        background-size: 300% 300%;
+        animation: gradient-shift 6s ease infinite;
+      }
+
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .text-furry-gradient {
+        background: linear-gradient(135deg, #ff6b35, #ffd23f, #ff6b9d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-orange-50 via-pink-50 to-yellow-50 text-gray-900 overflow-x-hidden"
+  >
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 glass-effect transition-all duration-300"
+      id="navbar"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-paw text-4xl text-furry-orange"></i>
+            <span class="text-2xl font-display text-furry-gradient"
+              >FURRYCON</span
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Início</a
+            >
+            <a
+              href="#lineup"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Programação</a
+            >
+            <a
+              href="#tickets"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Ingressos</a
+            >
+            <a
+              href="#gallery"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Galeria</a
+            >
+            <a
+              href="#map"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Mapa</a
+            >
+            <a
+              href="#merch"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Merch</a
+            >
+            <a
+              href="#tips"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Dicas</a
+            >
+            <a
+              href="#location"
+              class="hover:text-furry-orange transition-colors font-semibold"
+              >Localização</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden text-2xl focus:outline-none text-furry-orange"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-white/95">
+        <div class="container mx-auto px-4 py-4 space-y-4">
+          <a
+            href="#home"
+            class="block hover:text-furry-orange transition-colors"
+            >Início</a
+          >
+          <a
+            href="#lineup"
+            class="block hover:text-furry-orange transition-colors"
+            >Programação</a
+          >
+          <a
+            href="#tickets"
+            class="block hover:text-furry-orange transition-colors"
+            >Ingressos</a
+          >
+          <a
+            href="#gallery"
+            class="block hover:text-furry-orange transition-colors"
+            >Galeria</a
+          >
+          <a href="#map" class="block hover:text-furry-orange transition-colors"
+            >Mapa</a
+          >
+          <a
+            href="#merch"
+            class="block hover:text-furry-orange transition-colors"
+            >Merch</a
+          >
+          <a
+            href="#tips"
+            class="block hover:text-furry-orange transition-colors"
+            >Dicas</a
+          >
+          <a
+            href="#location"
+            class="block hover:text-furry-orange transition-colors"
+            >Localização</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      style="
+        background: linear-gradient(
+          135deg,
+          #fff5e6 0%,
+          #ffe6f0 50%,
+          #e6f5ff 100%
+        );
+      "
+    >
+      <!-- Animated Background -->
+      <div class="absolute inset-0 opacity-30">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-furry-orange rounded-full blur-3xl animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-furry-pink rounded-full blur-3xl animate-pulse"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 w-96 h-96 bg-furry-yellow rounded-full blur-3xl animate-pulse"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 text-center z-10 relative">
+        <div class="animate-float">
+          <div class="mb-8">
+            <img
+              src="https://placehold.co/400x400/ff6b35/ffffff?text=Mascote"
+              alt="Furry Mascot"
+              class="w-48 h-48 mx-auto rounded-full object-cover border-8 border-furry-orange shadow-2xl animate-bounce-gentle"
+            />
+          </div>
+          <h1
+            class="text-7xl md:text-9xl font-display mb-6 text-furry-gradient uppercase tracking-tight"
+          >
+            FURRYCON
+          </h1>
+          <p class="text-3xl md:text-5xl mb-4 font-display text-furry-orange">
+            Brasil 2024
+          </p>
+          <p class="text-xl md:text-2xl mb-8 text-gray-700">
+            20, 21 e 22 de Dezembro de 2024
+          </p>
+          <p class="text-lg md:text-xl mb-12 text-furry-pink">
+            <i class="fas fa-map-marker-alt mr-2"></i>São Paulo, SP - Parque
+            Ibirapuera
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#tickets"
+              class="gradient-furry hover:scale-105 px-10 py-5 rounded-full text-xl font-bold transition-all transform text-white shadow-lg"
+            >
+              <i class="fas fa-ticket-alt mr-2"></i>Comprar Ingressos
+            </a>
+            <a
+              href="#lineup"
+              class="bg-white border-4 border-furry-orange hover:bg-furry-orange hover:text-white px-10 py-5 rounded-full text-xl font-bold transition-all transform hover:scale-105 shadow-lg"
+            >
+              <i class="fas fa-calendar-alt mr-2"></i>Ver Programação
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <a href="#lineup">
+          <i class="fas fa-chevron-down text-3xl text-furry-orange"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Line-up Section -->
+    <section id="lineup" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            PROGRAMAÇÃO
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+          <p class="text-gray-600 mt-4 text-lg">
+            Atividades incríveis para toda a comunidade furry!
+          </p>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="mb-16">
+          <h3 class="text-4xl font-display mb-8 text-furry-orange text-center">
+            <i class="fas fa-paw mr-2"></i>Dia 1 - Sexta-feira (20/12)
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl p-6 border-4 border-furry-orange hover:border-furry-pink transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/ff6b35/ffffff?text=Desfile"
+                  alt="Fursuit Parade"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-orange"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-orange">
+                    Desfile de Fursuits
+                  </h4>
+                  <p class="text-furry-pink font-semibold">10:00 - 12:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">
+                Mostre seu fursuit favorito no grande desfile!
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6 border-4 border-furry-yellow hover:border-furry-orange transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/ffd23f/ffffff?text=Arte"
+                  alt="Art Panel"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-yellow"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-yellow">
+                    Painel de Arte
+                  </h4>
+                  <p class="text-furry-orange font-semibold">14:00 - 16:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">
+                Workshop de desenho furry com artistas profissionais
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl p-6 border-4 border-furry-pink hover:border-furry-purple transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/ff6b9d/ffffff?text=Festa"
+                  alt="Dance Party"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-pink"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-pink">
+                    Furry Dance Party
+                  </h4>
+                  <p class="text-furry-purple font-semibold">20:00 - 23:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">
+                Noite de dança com DJs e muita diversão!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="mb-16">
+          <h3 class="text-4xl font-display mb-8 text-furry-yellow text-center">
+            <i class="fas fa-paw mr-2"></i>Dia 2 - Sábado (21/12)
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl p-6 border-4 border-furry-blue hover:border-cyan-500 transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/4ecdc4/ffffff?text=Concurso"
+                  alt="Fursuit Contest"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-blue"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-blue">
+                    Concurso de Fursuits
+                  </h4>
+                  <p class="text-cyan-600 font-semibold">11:00 - 14:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">
+                Competição de fursuits mais criativos!
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-6 border-4 border-furry-purple hover:border-furry-pink transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/a78bfa/ffffff?text=Meet"
+                  alt="Meet & Greet"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-purple"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-purple">
+                    Meet & Greet
+                  </h4>
+                  <p class="text-furry-pink font-semibold">15:00 - 17:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">
+                Conheça outros furries e faça novos amigos!
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-orange-100 to-yellow-100 rounded-2xl p-6 border-4 border-furry-orange hover:border-furry-yellow transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/ff6b35/ffffff?text=Show"
+                  alt="Concert"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-orange"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-orange">
+                    Show Musical
+                  </h4>
+                  <p class="text-furry-yellow font-semibold">19:00 - 22:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">
+                Apresentações musicais temáticas furry
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div>
+          <h3 class="text-4xl font-display mb-8 text-furry-pink text-center">
+            <i class="fas fa-paw mr-2"></i>Dia 3 - Domingo (22/12)
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl p-6 border-4 border-green-400 hover:border-emerald-500 transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/4ade80/ffffff?text=Fotos"
+                  alt="Photoshoot"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-green-400"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-green-600">
+                    Sessão de Fotos
+                  </h4>
+                  <p class="text-emerald-600 font-semibold">10:00 - 13:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Fotos profissionais com seu fursuit</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl p-6 border-4 border-furry-pink hover:border-rose-400 transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/ff6b9d/ffffff?text=Fim"
+                  alt="Closing Ceremony"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-pink"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-pink">
+                    Cerimônia de Encerramento
+                  </h4>
+                  <p class="text-rose-500 font-semibold">18:00 - 20:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Encerramento especial com premiações</p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6 border-4 border-furry-yellow hover:border-furry-orange transition-all group shadow-lg"
+            >
+              <div class="flex items-center space-x-4 mb-4">
+                <img
+                  src="https://placehold.co/200x200/ffd23f/ffffff?text=Despedida"
+                  alt="Farewell Party"
+                  class="w-20 h-20 rounded-full object-cover border-4 border-furry-yellow"
+                />
+                <div>
+                  <h4 class="text-xl font-bold text-furry-yellow">
+                    Festa de Despedida
+                  </h4>
+                  <p class="text-furry-orange font-semibold">20:00 - 23:00</p>
+                </div>
+              </div>
+              <p class="text-gray-700">Última noite de celebração!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tickets Section -->
+    <section
+      id="tickets"
+      class="py-20 bg-gradient-to-br from-orange-50 to-pink-50"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            INGRESSOS
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Single Day Ticket -->
+          <div
+            class="bg-white rounded-2xl p-8 border-4 border-furry-orange hover:border-furry-pink transition-all transform hover:scale-105 shadow-xl"
+          >
+            <div class="text-center mb-6">
+              <i class="fas fa-paw text-5xl text-furry-orange mb-4"></i>
+              <h3 class="text-3xl font-display mb-2 text-furry-orange">
+                1 DIA
+              </h3>
+              <p class="text-gray-600">Acesso para um dia</p>
+            </div>
+            <div class="text-center mb-6">
+              <span class="text-5xl font-black text-furry-orange">R$ 120</span>
+              <p class="text-sm text-gray-500 line-through mt-2">R$ 150</p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>Acesso a todas
+                as atividades
+              </li>
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>1 dia de evento
+              </li>
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>Reentrada
+                permitida
+              </li>
+            </ul>
+            <button
+              class="w-full bg-furry-orange hover:bg-orange-600 py-4 rounded-full font-bold text-lg transition-all text-white shadow-lg"
+            >
+              Comprar Agora
+            </button>
+          </div>
+
+          <!-- 3 Days Ticket -->
+          <div
+            class="bg-gradient-to-br from-furry-orange to-furry-pink rounded-2xl p-8 border-4 border-furry-yellow pulse-soft transform hover:scale-105 transition-all relative shadow-xl"
+          >
+            <div
+              class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-furry-yellow text-white px-4 py-1 rounded-full text-sm font-bold"
+            >
+              MAIS POPULAR
+            </div>
+            <div class="text-center mb-6">
+              <i class="fas fa-paw text-5xl text-white mb-4"></i>
+              <h3 class="text-3xl font-display mb-2 text-white">3 DIAS</h3>
+              <p class="text-white/90">Acesso completo</p>
+            </div>
+            <div class="text-center mb-6">
+              <span class="text-5xl font-black text-white">R$ 280</span>
+              <p class="text-sm text-white/70 line-through mt-2">R$ 450</p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-white">
+                <i class="fas fa-check text-white mr-2"></i>Acesso a todas as
+                atividades
+              </li>
+              <li class="flex items-center text-white">
+                <i class="fas fa-check text-white mr-2"></i>3 dias de evento
+              </li>
+              <li class="flex items-center text-white">
+                <i class="fas fa-check text-white mr-2"></i>Reentrada ilimitada
+              </li>
+              <li class="flex items-center text-white">
+                <i class="fas fa-check text-white mr-2"></i>Área VIP incluída
+              </li>
+            </ul>
+            <button
+              class="w-full bg-white hover:bg-gray-100 py-4 rounded-full font-bold text-lg transition-all text-furry-orange shadow-lg"
+            >
+              Comprar Agora
+            </button>
+          </div>
+
+          <!-- VIP Ticket -->
+          <div
+            class="bg-white rounded-2xl p-8 border-4 border-furry-pink hover:border-furry-purple transition-all transform hover:scale-105 shadow-xl"
+          >
+            <div class="text-center mb-6">
+              <i class="fas fa-crown text-5xl text-furry-pink mb-4"></i>
+              <h3 class="text-3xl font-display mb-2 text-furry-pink">VIP</h3>
+              <p class="text-gray-600">Experiência premium</p>
+            </div>
+            <div class="text-center mb-6">
+              <span class="text-5xl font-black text-furry-pink">R$ 450</span>
+              <p class="text-sm text-gray-500 line-through mt-2">R$ 600</p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>Tudo do 3 dias
+              </li>
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>Área VIP
+                exclusiva
+              </li>
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>Brunch incluso
+              </li>
+              <li class="flex items-center text-gray-700">
+                <i class="fas fa-check text-green-500 mr-2"></i>Kit exclusivo
+              </li>
+            </ul>
+            <button
+              class="w-full bg-furry-pink hover:bg-pink-500 py-4 rounded-full font-bold text-lg transition-all text-white shadow-lg"
+            >
+              Comprar Agora
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section - Past Events -->
+    <section id="gallery" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            EDIÇÕES ANTERIORES
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+          <p class="text-gray-600 mt-4 text-lg">
+            Reviva os melhores momentos das edições passadas
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg"
+          >
+            <img
+              src="https://placehold.co/600x400/ff6b35/ffffff?text=2023"
+              alt="FurryCon 2023"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-display mb-2 text-white">
+                  FurryCon 2023
+                </h3>
+                <p class="text-furry-yellow">5.000 furries reunidos!</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg"
+          >
+            <img
+              src="https://placehold.co/600x400/ff6b9d/ffffff?text=2022"
+              alt="FurryCon 2022"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-display mb-2 text-white">
+                  FurryCon 2022
+                </h3>
+                <p class="text-furry-pink">3.500 participantes</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg"
+          >
+            <img
+              src="https://placehold.co/600x400/4ecdc4/ffffff?text=2021"
+              alt="FurryCon 2021"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-display mb-2 text-white">
+                  FurryCon 2021
+                </h3>
+                <p class="text-furry-blue">2.000 furries</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg"
+          >
+            <img
+              src="https://placehold.co/600x400/ff6b35/ffffff?text=Fursuits"
+              alt="Fursuits"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-display mb-2 text-white">
+                  Fursuits Incríveis
+                </h3>
+                <p class="text-furry-orange">Criatividade sem limites</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg"
+          >
+            <img
+              src="https://placehold.co/600x400/ffd23f/ffffff?text=Comunidade"
+              alt="Community"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-display mb-2 text-white">
+                  Comunidade Unida
+                </h3>
+                <p class="text-furry-yellow">Amizades para a vida toda</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg"
+          >
+            <img
+              src="https://placehold.co/600x400/ff6b9d/ffffff?text=Diversão"
+              alt="Activities"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div class="absolute bottom-4 left-4 right-4">
+                <h3 class="text-2xl font-display mb-2 text-white">
+                  Atividades Diversas
+                </h3>
+                <p class="text-furry-pink">Diversão garantida</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="py-20 bg-gradient-to-br from-orange-50 to-pink-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            MAPA DO EVENTO
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Festival Map -->
+          <div>
+            <h3 class="text-3xl font-display mb-6 text-furry-orange">
+              Layout do Evento
+            </h3>
+            <div
+              class="bg-white rounded-2xl p-8 border-4 border-furry-orange shadow-xl"
+            >
+              <div
+                class="aspect-square bg-gradient-to-br from-orange-100 to-pink-100 rounded-xl flex items-center justify-center relative overflow-hidden"
+              >
+                <!-- Custom SVG Map -->
+                <svg
+                  viewBox="0 0 800 800"
+                  class="w-full h-full transform transition-transform duration-500 hover:scale-105"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <pattern
+                      id="grass"
+                      x="0"
+                      y="0"
+                      width="50"
+                      height="50"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <path
+                        d="M10 40 Q 25 10 40 40"
+                        stroke="#86efac"
+                        stroke-width="2"
+                        fill="none"
+                        opacity="0.3"
+                      />
+                      <circle
+                        cx="25"
+                        cy="25"
+                        r="2"
+                        fill="#86efac"
+                        opacity="0.3"
+                      />
+                    </pattern>
+                    <filter id="shadow">
+                      <feDropShadow
+                        dx="2"
+                        dy="2"
+                        stdDeviation="3"
+                        flood-opacity="0.2"
+                      />
+                    </filter>
+                    <filter id="glow-map">
+                      <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                      <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Base -->
+                  <rect width="800" height="800" fill="#f0fdf4" />
+                  <rect width="800" height="800" fill="url(#grass)" />
+
+                  <!-- Paths -->
+                  <path
+                    d="M400 750 C 400 750 400 400 400 400"
+                    stroke="#fff7ed"
+                    stroke-width="80"
+                    stroke-linecap="round"
+                    class="drop-shadow-sm"
+                  />
+                  <path
+                    d="M150 200 Q 400 400 650 200"
+                    stroke="#fff7ed"
+                    stroke-width="60"
+                    stroke-linecap="round"
+                    class="drop-shadow-sm"
+                  />
+                  <path
+                    d="M150 600 Q 400 400 650 600"
+                    stroke="#fff7ed"
+                    stroke-width="60"
+                    stroke-linecap="round"
+                    class="drop-shadow-sm"
+                  />
+                  <!-- Center Circle -->
+                  <circle
+                    cx="400"
+                    cy="400"
+                    r="120"
+                    fill="#fff7ed"
+                    class="drop-shadow-sm"
+                  />
+
+                  <!-- Areas -->
+
+                  <!-- Top Center: Main Stage -->
+                  <g transform="translate(400, 100)" class="cursor-pointer hover:opacity-90 transition-opacity">
+                    <rect
+                      x="-100"
+                      y="-20"
+                      width="200"
+                      height="80"
+                      rx="10"
+                      fill="#ff6b35"
+                      filter="url(#shadow)"
+                    />
+                    <circle cx="0" cy="60" r="40" fill="#ff8c61" filter="url(#shadow)" />
+                    <foreignObject x="-20" y="40" width="40" height="40">
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        class="w-full h-full flex items-center justify-center animate-bounce-gentle"
+                      >
+                        <i class="fas fa-music text-2xl text-white"></i>
+                      </div>
+                    </foreignObject>
+                    <text
+                      x="0"
+                      y="25"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="24"
+                      fill="white"
+                    >
+                      PALCO PRINCIPAL
+                    </text>
+                  </g>
+
+                  <!-- Center: Fursuit Lounge -->
+                  <g transform="translate(400, 400)" class="cursor-pointer hover:opacity-90 transition-opacity">
+                    <circle r="80" fill="#ff6b9d" opacity="0.2" />
+                    <path
+                      d="M-30,-20 A20,20 0 1,1 0,-35 A20,20 0 1,1 30,-20 A20,20 0 1,1 15,10 A35,35 0 1,1 -15,10 A20,20 0 1,1 -30,-20 Z"
+                      fill="#ff6b9d"
+                      transform="scale(1.5) translate(0, 5)"
+                      filter="url(#shadow)"
+                      class="pulse-soft"
+                    />
+                    <text
+                      x="0"
+                      y="70"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="20"
+                      fill="#be185d"
+                    >
+                      FURSUIT LOUNGE
+                    </text>
+                  </g>
+
+                  <!-- Top Left: Food -->
+                  <g transform="translate(150, 200)" class="cursor-pointer hover:opacity-90 transition-opacity">
+                    <circle r="70" fill="#ffd23f" filter="url(#shadow)" />
+                    <foreignObject x="-20" y="-30" width="40" height="40">
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        class="w-full h-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-hamburger text-3xl text-white"></i>
+                      </div>
+                    </foreignObject>
+                    <text
+                      x="0"
+                      y="30"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="16"
+                      fill="white"
+                    >
+                      FOOD COURT
+                    </text>
+                  </g>
+
+                  <!-- Top Right: Drinks -->
+                  <g transform="translate(650, 200)" class="cursor-pointer hover:opacity-90 transition-opacity">
+                    <circle r="70" fill="#a78bfa" filter="url(#shadow)" />
+                    <foreignObject x="-20" y="-30" width="40" height="40">
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        class="w-full h-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-glass-cheers text-3xl text-white"></i>
+                      </div>
+                    </foreignObject>
+                    <text
+                      x="0"
+                      y="30"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="16"
+                      fill="white"
+                    >
+                      BAR
+                    </text>
+                  </g>
+
+                  <!-- Bottom Left: Merch -->
+                  <g transform="translate(150, 600)" class="cursor-pointer hover:opacity-90 transition-opacity">
+                    <circle r="70" fill="#4ecdc4" filter="url(#shadow)" />
+                    <foreignObject x="-20" y="-30" width="40" height="40">
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        class="w-full h-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-tshirt text-3xl text-white"></i>
+                      </div>
+                    </foreignObject>
+                    <text
+                      x="0"
+                      y="30"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="16"
+                      fill="white"
+                    >
+                      MERCH
+                    </text>
+                  </g>
+
+                  <!-- Bottom Right: Photos -->
+                  <g transform="translate(650, 600)" class="cursor-pointer hover:opacity-90 transition-opacity">
+                    <circle r="70" fill="#4ade80" filter="url(#shadow)" />
+                    <foreignObject x="-20" y="-30" width="40" height="40">
+                      <div
+                        xmlns="http://www.w3.org/1999/xhtml"
+                        class="w-full h-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-camera text-3xl text-white"></i>
+                      </div>
+                    </foreignObject>
+                    <text
+                      x="0"
+                      y="30"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="16"
+                      fill="white"
+                    >
+                      FOTOS
+                    </text>
+                  </g>
+
+                  <!-- Entrance -->
+                  <g transform="translate(400, 750)">
+                    <text
+                      x="0"
+                      y="30"
+                      text-anchor="middle"
+                      font-family="Fredoka One"
+                      font-size="18"
+                      fill="#666"
+                    >
+                      ENTRADA
+                    </text>
+                    <path d="M-10,0 L0,-15 L10,0" fill="#666" />
+                  </g>
+
+                  <!-- Decor -->
+                  <circle cx="280" cy="400" r="15" fill="#86efac" opacity="0.8" />
+                  <circle cx="520" cy="400" r="15" fill="#86efac" opacity="0.8" />
+                  <circle cx="100" cy="400" r="20" fill="#86efac" opacity="0.8" />
+                  <circle cx="700" cy="400" r="20" fill="#86efac" opacity="0.8" />
+                  <circle cx="280" cy="200" r="10" fill="#86efac" opacity="0.8" />
+                  <circle cx="520" cy="200" r="10" fill="#86efac" opacity="0.8" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Food & Drinks Map -->
+          <div>
+            <h3 class="text-3xl font-display mb-6 text-furry-pink">
+              Comida & Bebidas
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="bg-white rounded-xl p-6 border-4 border-furry-orange shadow-lg"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-furry-orange/20 rounded-xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-hamburger text-2xl text-furry-orange"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1 text-furry-orange">
+                      Burger Zone
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Hambúrgueres artesanais e batatas
+                    </p>
+                    <p class="text-furry-pink text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Área Central
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 border-4 border-furry-yellow shadow-lg"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-furry-yellow/20 rounded-xl flex items-center justify-center"
+                  >
+                    <i
+                      class="fas fa-pizza-slice text-2xl text-furry-yellow"
+                    ></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1 text-furry-yellow">
+                      Pizza Corner
+                    </h4>
+                    <p class="text-gray-600 text-sm">Pizzas e massas frescas</p>
+                    <p class="text-furry-orange text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Próximo ao Palco
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 border-4 border-furry-pink shadow-lg"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-furry-pink/20 rounded-xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-cocktail text-2xl text-furry-pink"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1 text-furry-pink">
+                      Furry Bar
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Bebidas especiais e drinks temáticos
+                    </p>
+                    <p class="text-furry-yellow text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Múltiplas
+                      localizações
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 border-4 border-furry-blue shadow-lg"
+              >
+                <div class="flex items-center space-x-4">
+                  <div
+                    class="w-16 h-16 bg-furry-blue/20 rounded-xl flex items-center justify-center"
+                  >
+                    <i class="fas fa-ice-cream text-2xl text-furry-blue"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1 text-furry-blue">
+                      Sweet Station
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Doces, sorvetes e sobremesas
+                    </p>
+                    <p class="text-furry-pink text-sm mt-1">
+                      <i class="fas fa-map-marker-alt mr-1"></i>Área VIP
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Merch Section -->
+    <section id="merch" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            MERCHANDISING
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+          <p class="text-gray-600 mt-4 text-lg">
+            Leve a experiência FurryCon para casa
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Product 1 -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border-4 border-furry-orange hover:border-furry-pink transition-all group shadow-xl"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://placehold.co/400x500/ff6b35/ffffff?text=Camiseta"
+                alt="Camiseta"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+              <div
+                class="absolute top-4 right-4 bg-furry-yellow text-white px-3 py-1 rounded-full text-xs font-bold"
+              >
+                NOVO
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-furry-orange">
+                Camiseta FurryCon
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Camiseta oficial do evento
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-furry-pink">R$ 79</span>
+                <button
+                  class="bg-furry-orange hover:bg-orange-600 px-6 py-2 rounded-full font-bold transition-all text-white"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border-4 border-furry-yellow hover:border-furry-orange transition-all group shadow-xl"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://placehold.co/400x500/ffd23f/ffffff?text=Moletom"
+                alt="Moletom"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-furry-yellow">
+                Moletom Premium
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">Moletom com capuz</p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-furry-orange"
+                  >R$ 139</span
+                >
+                <button
+                  class="bg-furry-yellow hover:bg-yellow-500 px-6 py-2 rounded-full font-bold transition-all text-white"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border-4 border-furry-pink hover:border-furry-purple transition-all group shadow-xl"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://placehold.co/400x500/ff6b9d/ffffff?text=Boné"
+                alt="Boné"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-furry-pink">Boné Furry</h3>
+              <p class="text-gray-600 text-sm mb-4">Boné ajustável</p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-furry-orange">R$ 49</span>
+                <button
+                  class="bg-furry-pink hover:bg-pink-500 px-6 py-2 rounded-full font-bold transition-all text-white"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border-4 border-furry-blue hover:border-cyan-500 transition-all group shadow-xl"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://placehold.co/400x500/4ecdc4/ffffff?text=Kit"
+                alt="Kit"
+                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-furry-blue">
+                Kit Completo
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Camiseta + Moletom + Boné
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-furry-pink">R$ 229</span>
+                <button
+                  class="bg-furry-blue hover:bg-cyan-600 px-6 py-2 rounded-full font-bold transition-all text-white"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section
+      id="tips"
+      class="py-20 bg-gradient-to-br from-orange-50 to-pink-50"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            DICAS IMPORTANTES
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="bg-white rounded-2xl p-6 border-4 border-furry-orange shadow-lg"
+          >
+            <div class="text-4xl mb-4 text-furry-orange">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-furry-orange">
+              Documentação
+            </h3>
+            <p class="text-gray-700">
+              Traga documento com foto original. Cópias não são aceitas.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 border-4 border-furry-yellow shadow-lg"
+          >
+            <div class="text-4xl mb-4 text-furry-yellow">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-furry-yellow">Fursuit</h3>
+            <p class="text-gray-700">
+              Fursuits são bem-vindos! Traga o seu e participe do desfile.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 border-4 border-furry-pink shadow-lg"
+          >
+            <div class="text-4xl mb-4 text-furry-pink">
+              <i class="fas fa-tint"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-furry-pink">Hidratação</h3>
+            <p class="text-gray-700">
+              Beba água regularmente. Postos de água disponíveis em todo o
+              evento.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 border-4 border-furry-blue shadow-lg"
+          >
+            <div class="text-4xl mb-4 text-furry-blue">
+              <i class="fas fa-car"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-furry-blue">
+              Estacionamento
+            </h3>
+            <p class="text-gray-700">
+              Estacionamento disponível. Chegue cedo para garantir vaga.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 border-4 border-furry-purple shadow-lg"
+          >
+            <div class="text-4xl mb-4 text-furry-purple">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-furry-purple">
+              Fotografias
+            </h3>
+            <p class="text-gray-700">
+              Sempre peça permissão antes de fotografar outros furries.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 border-4 border-green-400 shadow-lg"
+          >
+            <div class="text-4xl mb-4 text-green-500">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-green-600">Respeito</h3>
+            <p class="text-gray-700">
+              Respeite todos os participantes. Seja gentil e acolhedor!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            O QUE DIZEM
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl p-6 border-4 border-furry-orange shadow-lg"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://i.pravatar.cc/150?img=32"
+                alt="User"
+                class="w-12 h-12 rounded-full mr-4 border-4 border-furry-orange"
+              />
+              <div>
+                <h4 class="font-bold text-furry-orange">Maria Silva</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              "Melhor evento furry que já participei! A comunidade é incrível e
+              acolhedora. Já comprei meu ingresso para 2024!"
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6 border-4 border-furry-yellow shadow-lg"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://i.pravatar.cc/150?img=11"
+                alt="User"
+                class="w-12 h-12 rounded-full mr-4 border-4 border-furry-yellow"
+              />
+              <div>
+                <h4 class="font-bold text-furry-yellow">João Santos</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              "Atividades incríveis e organização perfeita! Conheci muitos
+              furries e fiz amizades que duram até hoje!"
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl p-6 border-4 border-furry-pink shadow-lg"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://i.pravatar.cc/150?img=5"
+                alt="User"
+                class="w-12 h-12 rounded-full mr-4 border-4 border-furry-pink"
+              />
+              <div>
+                <h4 class="font-bold text-furry-pink">Ana Costa</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              "Experiência inesquecível! O ambiente é super acolhedor e todos
+              são muito respeitosos. Recomendo 100%!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Weather Section -->
+    <section
+      id="location"
+      class="py-20 bg-gradient-to-br from-pink-50 to-orange-50"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-6xl font-display mb-4 text-furry-gradient">
+            LOCALIZAÇÃO & CLIMA
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-furry-orange via-furry-yellow to-furry-pink mx-auto rounded-full"
+          ></div>
+          <p class="text-gray-600 mt-4 text-lg">
+            Venha nos encontrar no coração de São Paulo!
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <!-- Info Column -->
+          <div class="space-y-8">
+            <!-- Address Card -->
+            <div
+              class="bg-white rounded-2xl p-8 border-4 border-furry-orange shadow-lg transform hover:scale-105 transition-transform"
+            >
+              <div class="flex items-start space-x-4">
+                <div
+                  class="bg-furry-orange/20 p-4 rounded-full text-furry-orange"
+                >
+                  <i class="fas fa-map-marked-alt text-3xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-display text-furry-orange mb-2">
+                    Endereço
+                  </h3>
+                  <p class="text-gray-700 text-lg font-bold">
+                    Parque Ibirapuera
+                  </p>
+                  <p class="text-gray-600">
+                    Av. Pedro Álvares Cabral - Vila Mariana
+                  </p>
+                  <p class="text-gray-600">São Paulo - SP, 04094-050</p>
+                  <p class="text-furry-pink font-bold mt-2">Portão 10</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transport Card -->
+            <div
+              class="bg-white rounded-2xl p-8 border-4 border-furry-blue shadow-lg transform hover:scale-105 transition-transform"
+            >
+              <h3
+                class="text-2xl font-display text-furry-blue mb-6 flex items-center"
+              >
+                <i class="fas fa-bus mr-3"></i> Como Chegar
+              </h3>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <i
+                    class="fas fa-subway text-furry-purple text-xl mt-1 w-8"
+                  ></i>
+                  <div>
+                    <span class="font-bold text-gray-800">Metrô</span>
+                    <p class="text-gray-600 text-sm">
+                      Estação AACD-Servidor (Linha 5-Lilás) - 15min de
+                      caminhada.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <i class="fas fa-bus text-furry-orange text-xl mt-1 w-8"></i>
+                  <div>
+                    <span class="font-bold text-gray-800">Ônibus</span>
+                    <p class="text-gray-600 text-sm">
+                      Linhas: 5154-10, 5300-10, 5630-10 (Parada Av. Pedro
+                      Álvares Cabral).
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <i class="fas fa-car text-furry-pink text-xl mt-1 w-8"></i>
+                  <div>
+                    <span class="font-bold text-gray-800">Carro/App</span>
+                    <p class="text-gray-600 text-sm">
+                      Estacionamento Zona Azul no local (Entrada pelo Portão 3).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weather Widget -->
+            <div
+              class="bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl p-8 border-4 border-white shadow-xl text-white relative overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 -mt-4 -mr-4 bg-yellow-300 w-24 h-24 rounded-full opacity-50 blur-2xl animate-pulse"
+              ></div>
+
+              <h3
+                class="text-2xl font-display mb-6 flex items-center relative z-10"
+              >
+                <i class="fas fa-cloud-sun mr-3"></i> Previsão do Tempo
+              </h3>
+
+              <div class="flex items-center justify-between relative z-10">
+                <div class="text-center group">
+                  <p class="font-bold text-blue-100">SEX</p>
+                  <i
+                    class="fas fa-sun text-3xl text-yellow-300 my-2 group-hover:animate-spin"
+                  ></i>
+                  <span class="block font-bold">28°C</span>
+                </div>
+                <div class="text-center group">
+                  <p class="font-bold text-blue-100">SÁB</p>
+                  <i
+                    class="fas fa-cloud-sun text-3xl text-white my-2 group-hover:animate-bounce"
+                  ></i>
+                  <span class="block font-bold">26°C</span>
+                </div>
+                <div class="text-center group">
+                  <p class="font-bold text-blue-100">DOM</p>
+                  <i
+                    class="fas fa-cloud-showers-heavy text-3xl text-blue-100 my-2 group-hover:animate-pulse"
+                  ></i>
+                  <span class="block font-bold">24°C</span>
+                </div>
+              </div>
+              <p class="mt-4 text-center text-blue-100 text-sm italic">
+                *Mantenha-se hidratado e use protetor solar!
+              </p>
+            </div>
+          </div>
+
+          <!-- Map Frame -->
+          <div
+            class="bg-white rounded-2xl p-4 border-4 border-furry-purple shadow-xl h-full min-h-[500px] flex flex-col"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.448598130907!2d-46.66236622375862!3d-23.58824436258778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59f1069d11d1%3A0xcb936109af9ce4ea!2sParque%20Ibirapuera!5e0!3m2!1sen!2sbr!4v1709761234567!5m2!1sen!2sbr"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="rounded-xl flex-grow"
+            ></iframe>
+
+            <div class="mt-4 text-center">
+              <a
+                href="https://goo.gl/maps/ibirapuera"
+                target="_blank"
+                class="inline-block bg-furry-purple hover:bg-purple-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg"
+              >
+                <i class="fas fa-location-arrow mr-2"></i> Abrir no Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gradient-to-br from-orange-100 to-pink-100 border-t-4 border-furry-orange py-12"
+    >
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i class="fas fa-paw text-2xl text-furry-orange"></i>
+              <span class="text-xl font-display text-furry-gradient"
+                >FURRYCON</span
+              >
+            </div>
+            <p class="text-gray-700 text-sm">
+              O maior encontro furry do Brasil. Celebre a diversidade e a
+              criatividade!
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4 text-furry-orange">Links</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li>
+                <a href="#lineup" class="hover:text-furry-orange"
+                  >Programação</a
+                >
+              </li>
+              <li>
+                <a href="#tickets" class="hover:text-furry-orange">Ingressos</a>
+              </li>
+              <li>
+                <a href="#gallery" class="hover:text-furry-orange">Galeria</a>
+              </li>
+              <li>
+                <a href="#merch" class="hover:text-furry-orange"
+                  >Merchandising</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4 text-furry-pink">Informações</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><a href="#tips" class="hover:text-furry-pink">Dicas</a></li>
+              <li><a href="#map" class="hover:text-furry-pink">Mapa</a></li>
+              <li><a href="#" class="hover:text-furry-pink">FAQ</a></li>
+              <li><a href="#" class="hover:text-furry-pink">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4 text-furry-yellow">Redes Sociais</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-furry-orange/20 hover:bg-furry-orange rounded-full flex items-center justify-center transition-all text-furry-orange"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-furry-pink/20 hover:bg-furry-pink rounded-full flex items-center justify-center transition-all text-furry-pink"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-furry-yellow/20 hover:bg-furry-yellow rounded-full flex items-center justify-center transition-all text-furry-yellow"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-furry-blue/20 hover:bg-furry-blue rounded-full flex items-center justify-center transition-all text-furry-blue"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t-2 border-furry-orange/30 pt-8 text-center text-gray-700 text-sm"
+        >
+          <p>&copy; 2024 FurryCon Brasil. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("bg-white/95");
+          navbar.classList.remove("glass-effect");
+        } else {
+          navbar.classList.remove("bg-white/95");
+          navbar.classList.add("glass-effect");
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

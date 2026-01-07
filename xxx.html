@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XXXPremium - O Portal Definitivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      document.documentElement.classList.add("dark");
+    </script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary: #f43f5e;
+        --color-primary-hover: #e11d48;
+        --color-dark-bg: #0f0f0f;
+        --color-dark-surface: #1e1e1e;
+        --color-dark-hover: #2d2d2d;
+        --color-gold: #fbbf24;
+      }
+
+      body { font-family: "Inter", sans-serif; }
+      h1, h2, h3, h4, .font-heading { font-family: "Montserrat", sans-serif; }
+
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #f43f5e; }
+
+      .glass-nav {
+        background: rgba(15, 15, 15, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .mega-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+      
+      .group:hover .mega-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-dark-bg text-gray-900 dark:text-gray-100 min-h-screen selection:bg-primary selection:text-white transition-colors duration-300">
+    
+    <!-- Top Bar -->
+    <div class="bg-gradient-to-r from-red-900 via-primary to-purple-900 text-white text-[10px] font-bold uppercase tracking-widest text-center py-1.5 fixed top-0 w-full z-[60] shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <span><i class="fas fa-lock mr-2"></i>Acesso Seguro e Discreto</span>
+            <span class="animate-pulse text-yellow-300">Promoção VIP: 50% OFF HOJE <i class="fas fa-arrow-right ml-1"></i></span>
+            <span>Suporte 24/7</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-7 w-full z-50 glass-nav transition-all duration-300">
+      <div class="container mx-auto px-4 lg:px-6">
+        <div class="flex items-center justify-between h-16 gap-6">
+          <div class="flex items-center gap-4">
+            <button class="lg:hidden p-2 text-gray-400 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
+            <a href="#" class="text-2xl font-black font-heading tracking-tighter hover:scale-105 transition-transform flex items-center gap-1">
+              <span class="text-white">XXX</span><span class="text-primary">Premium</span>
+            </a>
+          </div>
+
+          <div class="hidden md:flex flex-1 max-w-xl">
+            <div class="relative w-full group">
+              <input type="text" placeholder="Buscar vídeos, canais ou acompanhantes..." class="w-full bg-dark-surface border border-gray-800 text-sm rounded-full py-2.5 pl-5 pr-12 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-gray-200 placeholder-gray-500">
+              <button class="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors">
+                <i class="fas fa-search text-xs"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+             <button class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-primary to-orange-500 hover:from-primary-hover hover:to-orange-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5">
+               <i class="fas fa-crown"></i> Seja Premium
+             </button>
+             <button class="p-2 text-gray-400 hover:text-white transition-colors relative">
+               <i class="fas fa-bell text-xl"></i>
+               <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+             </button>
+             <div class="w-9 h-9 rounded-full bg-gray-700 border-2 border-gray-600 overflow-hidden cursor-pointer hover:border-primary transition-colors">
+               <img src="https://i.pravatar.cc/100?img=3" alt="User">
+             </div>
+          </div>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1 h-12 text-sm font-medium border-t border-gray-800/50 relative">
+          <a href="#" class="px-4 h-full flex items-center text-primary border-b-2 border-primary"><i class="fas fa-home mr-2"></i> Início</a>
+          <div class="group h-full">
+              <a href="#" class="px-4 h-full flex items-center text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+                  <i class="fas fa-th mr-2"></i> Categorias <i class="fas fa-chevron-down ml-1 text-xs"></i>
+              </a>
+              <div class="mega-menu absolute left-0 top-full w-full bg-dark-bg/95 backdrop-blur-xl border-t border-gray-800 shadow-2xl p-8 grid grid-cols-4 gap-8">
+                  <div>
+                      <h4 class="text-primary font-bold mb-4 uppercase text-xs tracking-widest border-b border-gray-800 pb-2">Por Gênero</h4>
+                      <ul class="space-y-2 text-gray-400 text-sm">
+                          <li><a href="#" class="hover:text-white">Amador</a></li>
+                          <li><a href="#" class="hover:text-white">Milf</a></li>
+                          <li><a href="#" class="hover:text-white">Teen (18+)</a></li>
+                          <li><a href="#" class="hover:text-white">Maduras</a></li>
+                      </ul>
+                  </div>
+                  <div>
+                      <h4 class="text-primary font-bold mb-4 uppercase text-xs tracking-widest border-b border-gray-800 pb-2">Ação</h4>
+                      <ul class="space-y-2 text-gray-400 text-sm">
+                          <li><a href="#" class="hover:text-white">Anal</a></li>
+                          <li><a href="#" class="hover:text-white">Dupla Penetração</a></li>
+                          <li><a href="#" class="hover:text-white">Gangbang</a></li>
+                      </ul>
+                  </div>
+                  <div>
+                      <h4 class="text-primary font-bold mb-4 uppercase text-xs tracking-widest border-b border-gray-800 pb-2">Regional</h4>
+                      <ul class="space-y-2 text-gray-400 text-sm">
+                          <li><a href="#" class="hover:text-white">Brasileiras</a></li>
+                          <li><a href="#" class="hover:text-white">Asiáticas</a></li>
+                          <li><a href="#" class="hover:text-white">Latinas</a></li>
+                      </ul>
+                  </div>
+                  <div>
+                      <a href="#" class="block rounded-xl overflow-hidden relative group/banner">
+                          <img src="https://placehold.co/400x250/222/FFF?text=Premium+Collection" class="w-full h-full object-cover">
+                          <div class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover/banner:bg-black/30 transition-colors">
+                              <span class="border border-white text-white px-4 py-2 uppercase font-bold text-xs">Ver Coleção VIP</span>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          <a href="#videos" class="px-4 h-full flex items-center text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><i class="fas fa-play-circle mr-2"></i> Vídeos</a>
+          <a href="#channels" class="px-4 h-full flex items-center text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><i class="fas fa-users mr-2"></i> Canais</a>
+          <a href="#cams" class="px-4 h-full flex items-center text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><i class="fas fa-video mr-2"></i> Cams</a>
+          <a href="#escorts" class="px-4 h-full flex items-center text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><i class="fas fa-fire mr-2"></i> Acompanhantes</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="pt-48 pb-20 px-4 lg:px-8 max-w-[1920px] mx-auto space-y-24">
+      
+      <!-- 1. VÍDEOS (3 linhas x 4 colunas = 12 vídeos) -->
+      <section id="videos">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+            <i class="fas fa-play text-primary"></i> Vídeos em Destaque
+          </h3>
+          <div class="flex gap-2 text-sm">
+             <a href="#" class="px-3 py-1 bg-primary text-white rounded-full">Recentes</a>
+             <a href="#" class="px-3 py-1 bg-dark-surface text-gray-400 hover:text-white rounded-full transition-colors">Mais Vistos</a>
+             <a href="#" class="px-3 py-1 bg-dark-surface text-gray-400 hover:text-white rounded-full transition-colors">Top Rated</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+           <!-- Generating 12 Video Cards -->
+           <!-- Video 1 -->
+           <article class="group cursor-pointer flex flex-col gap-3">
+             <div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
+               <img src="https://placehold.co/600x340/2a2a2a/666666?text=Video+01" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+               <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg"><i class="fas fa-play ml-1"></i></div>
+               </div>
+               <div class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">14:20</div>
+               <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">4K</div>
+             </div>
+             <div>
+               <h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">Loirinha estreante fica tímida na primeira cena</h4>
+               <div class="flex justify-between text-[11px] text-gray-500 font-medium mt-1">
+                 <span>2M views</span>
+                 <span class="text-green-500"><i class="fas fa-thumbs-up"></i> 98%</span>
+               </div>
+             </div>
+           </article>
+           <!-- Video 2 -->
+           <article class="group cursor-pointer flex flex-col gap-3">
+             <div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
+               <img src="https://placehold.co/600x340/1a1a1a/555555?text=Video+02" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+               <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg"><i class="fas fa-play ml-1"></i></div>
+               </div>
+               <div class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">22:15</div>
+             </div>
+             <div>
+               <h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">Compilado Exclusivo: As Melhores Cenas de 2025</h4>
+               <div class="flex justify-between text-[11px] text-gray-500 font-medium mt-1">
+                 <span>500K views</span>
+                 <span class="text-green-500"><i class="fas fa-thumbs-up"></i> 95%</span>
+               </div>
+             </div>
+           </article>
+           <!-- Video 3 -->
+           <article class="group cursor-pointer flex flex-col gap-3">
+             <div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
+               <img src="https://placehold.co/600x340/333/777?text=Video+03" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+               <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg"><i class="fas fa-play ml-1"></i></div>
+               </div>
+               <div class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">18:40</div>
+               <div class="absolute top-2 left-2 bg-purple-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">VR</div>
+             </div>
+             <div>
+               <h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">Experiência VR: Jantar Romântico e Surpresa</h4>
+               <div class="flex justify-between text-[11px] text-gray-500 font-medium mt-1">
+                 <span>800K views</span>
+                 <span class="text-green-500"><i class="fas fa-thumbs-up"></i> 99%</span>
+               </div>
+             </div>
+           </article>
+           <!-- Video 4 -->
+           <article class="group cursor-pointer flex flex-col gap-3">
+             <div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
+               <img src="https://placehold.co/600x340/222/888?text=Video+04" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+               <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg"><i class="fas fa-play ml-1"></i></div>
+               </div>
+               <div class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">35:10</div>
+             </div>
+             <div>
+               <h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">Bastidores da produção mais cara do ano</h4>
+               <div class="flex justify-between text-[11px] text-gray-500 font-medium mt-1">
+                 <span>1.2M views</span>
+                 <span class="text-green-500"><i class="fas fa-thumbs-up"></i> 97%</span>
+               </div>
+             </div>
+           </article>
+
+           <!-- Row 2 -->
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/111/444?text=Video+05" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #5</h4><div class="text-[11px] text-gray-500 mt-1">450K views</div></div></article>
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/222/555?text=Video+06" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #6</h4><div class="text-[11px] text-gray-500 mt-1">320K views</div></div></article>
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/333/666?text=Video+07" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #7</h4><div class="text-[11px] text-gray-500 mt-1">780K views</div></div></article>
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/444/777?text=Video+08" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #8</h4><div class="text-[11px] text-gray-500 mt-1">110K views</div></div></article>
+
+           <!-- Row 3 -->
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/555/888?text=Video+09" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #9</h4><div class="text-[11px] text-gray-500 mt-1">900K views</div></div></article>
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/666/999?text=Video+10" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #10</h4><div class="text-[11px] text-gray-500 mt-1">50K views</div></div></article>
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/777/aaa?text=Video+11" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #11</h4><div class="text-[11px] text-gray-500 mt-1">2.5M views</div></div></article>
+           <article class="group cursor-pointer flex flex-col gap-3"><div class="relative aspect-video rounded-xl overflow-hidden bg-dark-surface"><img src="https://placehold.co/600x340/888/bbb?text=Video+12" class="w-full h-full object-cover"></div><div><h4 class="font-bold text-gray-100 text-sm leading-snug group-hover:text-primary">Video Título #12</h4><div class="text-[11px] text-gray-500 mt-1">600K views</div></div></article>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12 gap-2">
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
+            <button class="w-10 h-10 rounded-lg bg-primary text-white font-bold flex items-center justify-center">1</button>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 hover:text-white font-bold flex items-center justify-center transition-colors">2</button>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 hover:text-white font-bold flex items-center justify-center transition-colors">3</button>
+            <span class="w-10 h-10 flex items-center justify-center text-gray-600">...</span>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- 2. CANAIS (Perfis) -->
+      <section id="channels" class="border-t border-gray-800 pt-16">
+          <div class="flex items-center justify-between mb-8">
+              <h3 class="text-2xl font-bold text-white"><i class="fas fa-users text-primary mr-2"></i> Canais Populares</h3>
+              <a href="#" class="text-sm font-bold text-primary hover:text-white transition-colors">Ver todos <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+          
+          <div class="flex gap-8 overflow-x-auto pb-6 scrollbar-hide">
+              <!-- Channel 1 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/222/fff?text=Model+1" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">Sweet_Sarah</span>
+              </a>
+              <!-- Channel 2 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/333/fff?text=Model+2" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">HotCouple</span>
+              </a>
+              <!-- Channel 3 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/444/fff?text=Model+3" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">Bella_Rio</span>
+              </a>
+              <!-- Channel 4 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/555/fff?text=Model+4" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">Yumi_Chan</span>
+              </a>
+               <!-- Channel 5 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/666/fff?text=Model+5" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">CherryX</span>
+              </a>
+               <!-- Channel 6 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/777/fff?text=Model+6" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">Elsa</span>
+              </a>
+              <!-- Channel 7 -->
+              <a href="#" class="flex flex-col items-center gap-3 min-w-[100px] group">
+                  <div class="w-24 h-24 rounded-full p-1 border-2 border-gray-700 group-hover:border-primary transition-colors">
+                      <img src="https://placehold.co/200x200/888/fff?text=Model+7" class="w-full h-full rounded-full object-cover">
+                  </div>
+                  <span class="text-sm font-semibold text-gray-300 group-hover:text-white text-center">Foxxy</span>
+              </a>
+          </div>
+      </section>
+
+      <!-- 3. CAMS AO VIVO (Grid Player 16:9) -->
+      <section id="cams" class="border-t border-gray-800 pt-16">
+          <div class="flex items-center justify-between mb-8">
+              <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                <span class="flex h-3 w-3 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                </span>
+                Cams Ao Vivo
+                <span class="text-sm font-normal text-gray-500 ml-2">1,245 online</span>
+              </h3>
+              <a href="#" class="text-sm font-bold text-primary hover:text-white transition-colors">Ver todas <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Cam 1 -->
+              <article class="group cursor-pointer">
+                  <div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black">
+                      <img src="https://placehold.co/600x340/222/fff?text=Live+Cam+1" class="w-full h-full object-cover opacity-90">
+                      <div class="absolute top-2 left-2 flex gap-2">
+                           <span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span>
+                      </div>
+                      <div class="absolute bottom-2 left-2 text-white text-xs font-bold drop-shadow-md">
+                          <i class="fas fa-user-circle mr-1"></i> Sweet_Sarah
+                      </div>
+                      <div class="absolute bottom-2 right-2 text-white text-xs bg-black/50 px-2 py-0.5 rounded">
+                          <i class="fas fa-eye text-primary mr-1"></i> 12k
+                      </div>
+                  </div>
+              </article>
+              <!-- Cam 2 -->
+              <article class="group cursor-pointer">
+                  <div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black">
+                      <img src="https://placehold.co/600x340/333/fff?text=Live+Cam+2" class="w-full h-full object-cover opacity-90">
+                      <div class="absolute top-2 left-2 flex gap-2">
+                           <span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span>
+                      </div>
+                      <div class="absolute bottom-2 left-2 text-white text-xs font-bold drop-shadow-md">
+                          <i class="fas fa-user-circle mr-1"></i> HotCoupleXX
+                      </div>
+                      <div class="absolute bottom-2 right-2 text-white text-xs bg-black/50 px-2 py-0.5 rounded">
+                          <i class="fas fa-eye text-primary mr-1"></i> 8.5k
+                      </div>
+                  </div>
+              </article>
+              <!-- Cam 3 -->
+              <article class="group cursor-pointer">
+                  <div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black">
+                      <img src="https://placehold.co/600x340/444/fff?text=Live+Cam+3" class="w-full h-full object-cover opacity-90">
+                      <div class="absolute top-2 left-2 flex gap-2">
+                           <span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span>
+                      </div>
+                      <div class="absolute bottom-2 left-2 text-white text-xs font-bold drop-shadow-md">
+                          <i class="fas fa-user-circle mr-1"></i> Bella_Rio
+                      </div>
+                      <div class="absolute bottom-2 right-2 text-white text-xs bg-black/50 px-2 py-0.5 rounded">
+                          <i class="fas fa-eye text-primary mr-1"></i> 6k
+                      </div>
+                  </div>
+              </article>
+              <!-- Cam 4 -->
+              <article class="group cursor-pointer">
+                  <div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black">
+                      <img src="https://placehold.co/600x340/555/fff?text=Live+Cam+4" class="w-full h-full object-cover opacity-90">
+                      <div class="absolute top-2 left-2 flex gap-2">
+                           <span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span>
+                      </div>
+                       <div class="absolute bottom-2 left-2 text-white text-xs font-bold drop-shadow-md">
+                          <i class="fas fa-user-circle mr-1"></i> Yumi_Chan
+                      </div>
+                      <div class="absolute bottom-2 right-2 text-white text-xs bg-black/50 px-2 py-0.5 rounded">
+                          <i class="fas fa-eye text-primary mr-1"></i> 22k
+                      </div>
+                  </div>
+              </article>
+
+              <!-- Repeat Cams for Grid -->
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/666/fff?text=Live+Cam+5" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/777/fff?text=Live+Cam+6" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/888/fff?text=Live+Cam+7" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/999/fff?text=Live+Cam+8" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/aaa/fff?text=Live+Cam+9" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/bbb/fff?text=Live+Cam+10" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/ccc/fff?text=Live+Cam+11" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+              <article class="group cursor-pointer"><div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all bg-black"><img src="https://placehold.co/600x340/ddd/fff?text=Live+Cam+12" class="w-full h-full object-cover opacity-90"><div class="absolute top-2 left-2"><span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">LIVE</span></div></div></article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-12 gap-2">
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
+            <button class="w-10 h-10 rounded-lg bg-primary text-white font-bold flex items-center justify-center">1</button>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 hover:text-white font-bold flex items-center justify-center transition-colors">2</button>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- 4. ACOMPANHANTES (12 Cards with Info) -->
+      <section id="escorts" class="border-t border-gray-800 pt-16">
+          <div class="flex items-center justify-between mb-8">
+              <h3 class="text-2xl font-bold text-white"><i class="fas fa-fire text-primary mr-2"></i> Acompanhantes</h3>
+              <a href="#" class="text-sm font-bold text-primary hover:text-white transition-colors">Ver todas <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Generating 12 Escort Cards -->
+              <!-- Escort 1 -->
+              <div class="bg-dark-surface rounded-xl overflow-hidden group hover:-translate-y-1 transition-transform duration-300 border border-gray-800 hover:border-primary">
+                  <div class="relative aspect-[3/4]">
+                      <img src="https://placehold.co/400x533/111/ddd?text=Escort+1" class="w-full h-full object-cover">
+                      <div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold border border-gray-700"><span class="w-2 h-2 bg-green-500 rounded-full inline-block mr-1"></span> Online</div>
+                  </div>
+                  <div class="p-4">
+                      <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-white">Juliana, 23</h4>
+                        <span class="text-primary font-bold">R$ 500</span>
+                      </div>
+                      <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                          <span><i class="fas fa-map-marker-alt mr-1"></i> São Paulo</span>
+                          <span><i class="fas fa-check-circle text-blue-400 mr-1"></i> Verificada</span>
+                      </div>
+                      <button class="w-full py-2 rounded bg-gray-800 hover:bg-primary text-white font-bold text-sm transition-colors">Ver Perfil</button>
+                  </div>
+              </div>
+
+               <!-- Escort 2 -->
+              <div class="bg-dark-surface rounded-xl overflow-hidden group hover:-translate-y-1 transition-transform duration-300 border border-gray-800 hover:border-primary">
+                  <div class="relative aspect-[3/4]">
+                      <img src="https://placehold.co/400x533/222/ddd?text=Escort+2" class="w-full h-full object-cover">
+                  </div>
+                  <div class="p-4">
+                      <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-white">Mikaela, 20</h4>
+                        <span class="text-primary font-bold">R$ 600</span>
+                      </div>
+                       <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                          <span><i class="fas fa-map-marker-alt mr-1"></i> Rio de Janeiro</span>
+                           <span><i class="fas fa-check-circle text-blue-400 mr-1"></i> Verificada</span>
+                      </div>
+                      <button class="w-full py-2 rounded bg-gray-800 hover:bg-primary text-white font-bold text-sm transition-colors">Ver Perfil</button>
+                  </div>
+              </div>
+
+               <!-- Escort 3 -->
+              <div class="bg-dark-surface rounded-xl overflow-hidden group hover:-translate-y-1 transition-transform duration-300 border border-gray-800 hover:border-primary">
+                  <div class="relative aspect-[3/4]">
+                      <img src="https://placehold.co/400x533/333/ddd?text=Escort+3" class="w-full h-full object-cover">
+                  </div>
+                   <div class="p-4">
+                      <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-white">Larissa, 25</h4>
+                        <span class="text-primary font-bold">R$ 450</span>
+                      </div>
+                       <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                          <span><i class="fas fa-map-marker-alt mr-1"></i> Curitiba</span>
+                           <span><i class="fas fa-check-circle text-blue-400 mr-1"></i> Verificada</span>
+                      </div>
+                      <button class="w-full py-2 rounded bg-gray-800 hover:bg-primary text-white font-bold text-sm transition-colors">Ver Perfil</button>
+                  </div>
+              </div>
+
+               <!-- Escort 4 -->
+              <div class="bg-dark-surface rounded-xl overflow-hidden group hover:-translate-y-1 transition-transform duration-300 border border-gray-800 hover:border-primary">
+                  <div class="relative aspect-[3/4]">
+                      <img src="https://placehold.co/400x533/444/ddd?text=Escort+4" class="w-full h-full object-cover">
+                  </div>
+                   <div class="p-4">
+                      <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-white">Bianca, 22</h4>
+                        <span class="text-primary font-bold">R$ 550</span>
+                      </div>
+                       <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                          <span><i class="fas fa-map-marker-alt mr-1"></i> Belo Horizonte</span>
+                           <span><i class="fas fa-check-circle text-blue-400 mr-1"></i> Verificada</span>
+                      </div>
+                      <button class="w-full py-2 rounded bg-gray-800 hover:bg-primary text-white font-bold text-sm transition-colors">Ver Perfil</button>
+                  </div>
+              </div>
+
+              <!-- More Escorts Placeholders to reach 12 -->
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/555/999?text=Escort+5" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Amanda, 21</h4><div class="text-xs text-gray-400 mb-3">Brasília • R$ 400</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/666/999?text=Escort+6" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Carla, 26</h4><div class="text-xs text-gray-400 mb-3">Salvador • R$ 350</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/777/999?text=Escort+7" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Brenda, 24</h4><div class="text-xs text-gray-400 mb-3">Florianópolis • R$ 600</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/888/999?text=Escort+8" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Julia, 19</h4><div class="text-xs text-gray-400 mb-3">Porto Alegre • R$ 450</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/999/999?text=Escort+9" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Paty, 28</h4><div class="text-xs text-gray-400 mb-3">Recife • R$ 300</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/aaa/999?text=Escort+10" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Monica, 22</h4><div class="text-xs text-gray-400 mb-3">Fortaleza • R$ 400</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/bbb/999?text=Escort+11" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Vivi, 25</h4><div class="text-xs text-gray-400 mb-3">Goiânia • R$ 350</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+              <div class="bg-dark-surface rounded-xl overflow-hidden group border border-gray-800"><div class="aspect-[3/4] bg-gray-800 relative"><img src="https://placehold.co/400x533/ccc/999?text=Escort+12" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-white">Sasha, 20</h4><div class="text-xs text-gray-400 mb-3">Campinas • R$ 500</div><button class="w-full py-2 rounded bg-gray-800 text-white text-xs">Ver Perfil</button></div></div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-12 gap-2">
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
+            <button class="w-10 h-10 rounded-lg bg-primary text-white font-bold flex items-center justify-center">1</button>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 hover:text-white font-bold flex items-center justify-center transition-colors">2</button>
+            <button class="w-10 h-10 rounded-lg bg-dark-surface hover:bg-dark-hover text-gray-400 flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="bg-dark-surface border-t border-gray-800 pt-16 pb-8">
+      <div class="container mx-auto px-4 lg:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+           <div class="col-span-2">
+             <a href="#" class="text-2xl font-black font-heading tracking-tighter mb-4 block">
+                <span class="text-white">XXX</span><span class="text-primary">Premium</span>
+              </a>
+              <p class="text-gray-500 text-sm max-w-xs">A plataforma de streaming adulto mais avançada do mundo. Conteúdo exclusivo adicionado diariamente.</p>
+           </div>
+           
+           <div>
+             <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Navegação</h4>
+             <ul class="space-y-2 text-sm text-gray-500">
+               <li><a href="#" class="hover:text-primary transition-colors">Vídeos</a></li>
+               <li><a href="#" class="hover:text-primary transition-colors">Canais</a></li>
+               <li><a href="#" class="hover:text-primary transition-colors">Cams</a></li>
+               <li><a href="#" class="hover:text-primary transition-colors">Acompanhantes</a></li>
+             </ul>
+           </div>
+           
+           <div>
+             <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Suporte</h4>
+             <ul class="space-y-2 text-sm text-gray-500">
+               <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+               <li><a href="#" class="hover:text-primary transition-colors">Contato</a></li>
+               <li><a href="#" class="hover:text-primary transition-colors">Termos de Uso</a></li>
+             </ul>
+           </div>
+           
+           <div class="col-span-2 flex flex-col items-start lg:items-end">
+             <div class="flex gap-4 text-gray-400">
+               <a href="#" class="hover:text-primary transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+               <a href="#" class="hover:text-primary transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+             </div>
+           </div>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+          <p>&copy; 2026 XXXPremium Group. Todos os direitos reservados.</p>
+          <div class="flex gap-4 mt-4 md:mt-0">
+             <span>18+ APENAS</span>
+             <span>RTA</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
