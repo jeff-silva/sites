@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Directory | My Sites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-hover-bg: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #8b9bb4;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-color: #38bdf8;
+            --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #556270 100%);
+            --gradient-2: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-3: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+            --gradient-4: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 40%);
+            overflow-x: hidden;
+            padding-bottom: 5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            margin-bottom: 5rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards 0.3s;
+        }
+
+        .category-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(to right, var(--card-border), transparent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover-bg);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--card-accent, var(--text-secondary));
+            transition: height 0.3s ease;
+        }
+
+        .card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+
+        .card-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .arrow-icon {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-secondary);
+            transition: transform 0.3s ease, stroke 0.3s ease;
+        }
+
+        .card:hover .arrow-icon {
+            transform: translateX(5px);
+            stroke: var(--text-primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Stagger delays */
+        .card:nth-child(1) { animation-delay: 0.1s; --card-accent: #FF6B6B; }
+        .card:nth-child(2) { animation-delay: 0.2s; --card-accent: #4facfe; }
+        .card:nth-child(3) { animation-delay: 0.3s; --card-accent: #43e97b; }
+        .card:nth-child(4) { animation-delay: 0.4s; --card-accent: #f093fb; }
+        .card:nth-child(5) { animation-delay: 0.5s; --card-accent: #ffd700; }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Sites Directory</h1>
+            <p class="subtitle">A collection of web development prototypes and designs</p>
+        </header>
+
+        <section class="category-section">
+            <h2 class="category-title">Music & Bands</h2>
+            <div class="grid">
+                <a href="band-daft-punk.html" class="card" style="--card-accent: #e91e63;">
+                    <div class="card-content">
+                        <h3>Daft Punk Tribute</h3>
+                        <p>A digital homage to the legendary electronic duo, featuring discography.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="band-rock.html" class="card" style="--card-accent: #f44336;">
+                    <div class="card-content">
+                        <h3>Rock Band Landing</h3>
+                        <p>High-energy landing page for a rock band.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2 class="category-title">Festivals & Events</h2>
+            <div class="grid">
+                <a href="festival-rave.html" class="card" style="--card-accent: #d8b4fe;">
+                    <div class="card-content">
+                        <h3>Rave Festival</h3>
+                        <p>Vibrant colors and motion for an upcoming EDM rave event.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="festival-furries.html" class="card" style="--card-accent: #fbbf24;">
+                    <div class="card-content">
+                        <h3>Furries Festival</h3>
+                        <p>Playful design for a community character convention.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="festival-vegan.html" class="card" style="--card-accent: #4ade80;">
+                    <div class="card-content">
+                        <h3>Vegan Festival</h3>
+                        <p>Clean, green, and organic aesthetics for a food festival.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2 class="category-title">Shops & E-Commerce</h2>
+            <div class="grid">
+                <a href="store-dark-tshirts.html" class="card" style="--card-accent: #94a3b8;">
+                    <div class="card-content">
+                        <h3>Dark T-Shirts Store</h3>
+                        <p>Minimalist dark mode store for apparel.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="shop-croche.html" class="card" style="--card-accent: #f9a8d4;">
+                    <div class="card-content">
+                        <h3>Crochet Shop</h3>
+                        <p>Cozy and artisanal layout for handmade crochet goods.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2 class="category-title">Miscellaneous</h2>
+            <div class="grid">
+                <a href="xxx.html" class="card" style="--card-accent: #ef4444;">
+                    <div class="card-content">
+                        <h3>Premium Streaming</h3>
+                        <p>High-end responsive layout for media streaming.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
