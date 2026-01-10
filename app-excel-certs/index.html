@@ -39,7 +39,7 @@
     </style>
   </head>
   <body class="bg-gray-50 dark:bg-slate-950 font-sans overflow-hidden text-slate-800 dark:text-slate-200">
-    <div id="app" class="flex h-screen w-full">
+    <div id="app" class="flex flex-col md:flex-row h-screen w-full">
       
       <!-- SIDEBAR (Desktop) -->
       <aside class="hidden md:flex w-72 flex-col bg-slate-900 text-white flex-shrink-0 border-r border-slate-800 z-20">
@@ -125,7 +125,7 @@
              
             <!-- STEP 0: Upload -->
             <div v-if="step === 0" class="h-full flex flex-col items-center justify-center">
-                <div class="w-full max-w-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-12 text-center rounded-sm">
+                <div class="w-full max-w-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-6 sm:p-12 text-center rounded-sm">
                     <div class="mb-8 inline-flex p-4 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-3xl shadow-sm rotate-3 transform transition hover:rotate-6">
                       📂
                     </div>
@@ -199,15 +199,28 @@
              </div>
 
              <!-- STEP 3: Mapping (Split Editor) -->
-             <div v-show="step === 3" class="h-full flex flex-col lg:flex-row gap-6">
+             <div v-show="step === 3" class="w-full min-h-full lg:h-full flex flex-col lg:flex-row gap-6">
                  <!-- Canvas Wrapper -->
-                 <div class="flex-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-center items-center overflow-auto rounded-sm relative shadow-inner p-4 min-h-[500px]">
-                     <canvas id="certificateCanvas"></canvas>
-                     <!-- Instruction Overlay when empty -->
-                     <div v-if="selectedFields.length > 0 && !textObject" class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-700 p-3 text-xs shadow-sm max-w-xs pointer-events-none">
-                        <strong class="uppercase text-[10px] tracking-wider block mb-1 text-slate-500">Dica</strong>
-                        Desenhe um retângulo na imagem para posicionar o campo <b>{{ selectedFields[currentFieldIndex] }}</b>.
+                 <!-- Canvas Wrapper -->
+                 <div ref="canvasStage" class="w-full lg:flex-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-center items-center overflow-hidden rounded-sm relative shadow-inner p-2 sm:p-4 min-h-[35vh] sm:min-h-[500px]">
+                     
+                     <!-- Scalable Container -->
+                     <div :style="{ 
+                        width: canvasDimensions.width + 'px', 
+                        height: canvasDimensions.height + 'px',
+                        transform: `scale(${canvasScale})`,
+                        transformOrigin: 'center center',
+                        transition: 'transform 0.1s ease-out'
+                     }" class="relative shadow-xl">
+                        <canvas id="certificateCanvas"></canvas>
+                        
+                        <!-- Instruction Overlay -->
+                        <div v-if="selectedFields.length > 0 && !textObject" class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-700 p-3 text-xs shadow-sm max-w-[200px] sm:max-w-xs pointer-events-none z-10">
+                            <strong class="uppercase text-[10px] tracking-wider block mb-1 text-slate-500">Dica</strong>
+                            Desenhe um retângulo na imagem para posicionar o campo <b>{{ selectedFields[currentFieldIndex] }}</b>.
+                        </div>
                      </div>
+
                  </div>
 
                  <!-- Tools sidebar -->
@@ -350,6 +363,11 @@
 
             generatedImages: [],
             isGenerating: false,
+            
+            // Responsive Canvas
+            canvasScale: 1,
+            canvasDimensions: { width: 800, height: 600 },
+            resizeObserver: null,
           }
         },
         computed: {
@@ -476,6 +494,11 @@
                this.canvas.setWidth(img.width);
                this.canvas.setHeight(img.height);
                this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas));
+
+               // Store dims for scaling logic
+               this.canvasDimensions = { width: img.width, height: img.height };
+               // Calculate initial scale
+               this.updateLayoutScale();
 
                // Start at first tab
                this.switchTab(0);
@@ -858,10 +881,52 @@
 
           reset() {
             window.location.reload();
+          },
+
+          updateLayoutScale() {
+              if(!this.$refs.canvasStage) return;
+              
+              // Get available space in the container
+              const stageWidth = this.$refs.canvasStage.clientWidth;
+              const stageHeight = this.$refs.canvasStage.clientHeight;
+              
+              if (stageWidth <= 0 || stageHeight <= 0) return;
+              
+              const imgW = this.canvasDimensions.width;
+              const imgH = this.canvasDimensions.height;
+              
+              // Padding/Safety margin
+              const padding = 32; 
+              
+              const availableW = Math.max(0, stageWidth - padding);
+              const availableH = Math.max(0, stageHeight - padding);
+
+              // Calculate ratios
+              const scaleW = availableW / imgW;
+              const scaleH = availableH / imgH;
+              
+              // Fit Contain
+              let scale = Math.min(scaleW, scaleH);
+              
+              // Cap limits
+              if(scale > 1) scale = 1; 
+              if(scale < 0.1) scale = 0.1; // Minimum visible scale
+              
+              this.canvasScale = scale || 1;
           }
         },
         mounted() {
-           // Auto-init or checks
+           window.addEventListener('resize', this.updateLayoutScale);
+           
+           // Also observe the container specifically in case of flex resizing
+           if(this.$refs.canvasStage) {
+               this.resizeObserver = new ResizeObserver(() => this.updateLayoutScale());
+               this.resizeObserver.observe(this.$refs.canvasStage);
+           }
+        },
+        beforeUnmount() {
+            window.removeEventListener('resize', this.updateLayoutScale);
+            if(this.resizeObserver) this.resizeObserver.disconnect();
         }
       }).mount('#app');
     </script>
