@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Traffic Flow</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS 4 -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        body {
+            background-color: #0f172a; 
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .road-path {
+            fill: none;
+            stroke: #334155;
+            stroke-linecap: round;
+        }
+        .road-center {
+            fill: none;
+            stroke: #475569;
+            stroke-dasharray: 8, 8;
+            stroke-width: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white h-screen w-screen overflow-hidden">
+
+    <div id="app" class="relative w-full h-full">
+        
+        <!-- Scenery Layer -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none bg-emerald-950">
+            <defs>
+                <filter id="carGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+             <!-- Organic Green Patches -->
+             <circle cx="20%" cy="20%" r="300" fill="#064e3b" opacity="0.5" filter="blur(50px)" />
+             <circle cx="80%" cy="80%" r="400" fill="#065f46" opacity="0.4" filter="blur(60px)" />
+
+            <!-- The Road Graph -->
+            <g v-for="road in state.roads" :key="road.id">
+                <!-- Main Asphalt -->
+                <path :d="road.d" class="road-path" :stroke-width="state.roadWidth" />
+                <!-- Center Line -->
+                <path :d="road.d" class="road-center" />
+                <!-- End Caps/Nodes debug (optional, keeping clean for now) -->
+            </g>
+
+            <!-- Intersections (Visual blending) -->
+            <circle v-for="node in state.nodes" :key="node.id" 
+                    :cx="node.x" :cy="node.y" :r="state.roadWidth/2 - 2" fill="#334155" />
+
+            <!-- Cars -->
+            <g v-for="car in state.cars" :key="car.id">
+                <g :transform="`translate(${car.x}, ${car.y}) rotate(${car.rotation})`">
+                    <!-- Car Body -->
+                    <rect x="-8" y="-14" width="16" height="28" rx="3" :fill="car.color" filter="url(#carGlow)" />
+                    <!-- Roof -->
+                    <rect x="-7" y="-6" width="14" height="10" rx="2" fill="rgba(0,0,0,0.3)" />
+                    <!-- Lights -->
+                    <circle cx="-5" cy="-14" r="1.5" fill="#fef08a" class="animate-pulse" />
+                    <circle cx="5" cy="-14" r="1.5" fill="#fef08a" class="animate-pulse" />
+                    <rect x="-6" y="12" width="4" height="2" fill="#ef4444" />
+                    <rect x="2" y="12" width="4" height="2" fill="#ef4444" />
+                </g>
+            </g>
+
+        </svg>
+
+        <!-- UI Overlay -->
+        <div class="absolute top-6 left-6 max-w-xs">
+            <h1 class="text-3xl font-black tracking-tighter text-white mb-2">Organic<span class="text-emerald-400">Flow</span></h1>
+            <p class="text-sm text-slate-400 leading-relaxed">
+                Autonomous agents navigating a non-linear Bezier graph. 
+                Full two-way traffic simulation on disorganized "S" paths with dynamic re-routing.
+            </p>
+            <div class="mt-4 flex gap-4 text-xs font-mono text-emerald-500">
+                <div>AGENTS: {{ state.cars.length }}</div>
+                <div>NODES: {{ state.nodes.length }}</div>
+            </div>
+            <button @click="resetMap" class="mt-4 px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded text-xs transition">
+                Regenerate Chaos
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const { createApp, reactive, onMounted, nextTick } = Vue;
+
+        createApp({
+            setup() {
+                const state = reactive({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    roadWidth: 40,
+                    nodes: [],
+                    roads: [], // { id, startNode, endNode, d(path string), length }
+                    cars: []
+                });
+
+                let pathElements = {}; 
+                const colors = ['#f43f5e', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#06b6d4'];
+                let carId = 0;
+
+                // --- Graph Generation ---
+
+                const generateMap = () => {
+                    pathElements = {};
+                    state.cars = [];
+                    state.nodes = [];
+                    state.roads = [];
+                    
+                    const w = window.innerWidth;
+                    const h = window.innerHeight;
+                    const pad = 100;
+
+                    // 1. Create Random Nodes (Disorganized Cluster)
+                    // Let's make a few fixed "Hubs" and some random ones
+                    const nodes = [
+                        { id: 'n1', x: pad, y: pad }, // Top Left
+                        { id: 'n2', x: w/2, y: h/2 }, // Center
+                        { id: 'n3', x: w-pad, y: pad }, // Top Right
+                        { id: 'n4', x: pad, y: h-pad }, // Bot Left
+                        { id: 'n5', x: w-pad, y: h-pad }, // Bot Right
+                        { id: 'n6', x: w/2, y: pad }, // Top Center
+                        { id: 'n7', x: w/2, y: h-pad }, // Bot Center
+                         // Some random off-grid nodes
+                        { id: 'r1', x: w*0.2, y: h*0.4 },
+                        { id: 'r2', x: w*0.8, y: h*0.6 },
+                    ];
+                    
+                    state.nodes = nodes;
+
+                    // 2. Connect Nodes with Bezier Paths
+                    // Explicitly define some "S" curves and connections to form a web
+                    const edges = [
+                        ['n1', 'r1'], ['r1', 'n2'], // TL -> Center path
+                        ['n2', 'r2'], ['r2', 'n5'], // Center -> BR path
+                        ['n4', 'n2'], // BL -> Center
+                        ['n3', 'n2'], // TR -> Center
+                        ['n1', 'n6'], ['n6', 'n3'], // Top edge
+                        ['n4', 'n7'], ['n7', 'n5'], // Bot edge 
+                        ['n6', 'n2'], // Vertical Top Down
+                        ['n2', 'n7'], // Vertical Center Down
+                        ['r1', 'n4'], // Cross
+                        ['r2', 'n3'], // Cross
+                        ['n1', 'n4'], // Left Edge (Long curve?)
+                    ];
+
+                    edges.forEach((pair, idx) => {
+                        const start = nodes.find(n => n.id === pair[0]);
+                        const end = nodes.find(n => n.id === pair[1]);
+                        
+                        // Generate Control Points for "S" or "C" curves
+                        // Randomize slightly to allow "disorganized" feel
+                        const midX = (start.x + end.x) / 2;
+                        const midY = (start.y + end.y) / 2;
+                        
+                        // Chaotic control points
+                        // CP1 is somewhere between start and mid, but offset
+                        const cp1x = start.x + (Math.random() - 0.5) * 200;
+                        const cp1y = start.y + (Math.random() - 0.5) * 200;
+                        
+                        const cp2x = end.x + (Math.random() - 0.5) * 200;
+                        const cp2y = end.y + (Math.random() - 0.5) * 200; // Large offset for swerve
+
+                        // SVG Cubic Bezier: M start C cp1 cp2 end
+                        const d = `M ${start.x} ${start.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${end.x} ${end.y}`;
+                        
+                        state.roads.push({
+                            id: `road-${idx}`,
+                            startNode: start.id,
+                            endNode: end.id,
+                            d: d
+                        });
+                    });
+                };
+
+                // --- Setup Path Cache for Geometry ---
+                const cachePaths = () => {
+                   state.roads.forEach(road => {
+                       // We need to query the DOM element to get length and math
+                       // We'll use a specific selector since ref in v-for is tricky in Setup without component wrapper
+                       // BUT: The elements might not be rendered yet if we just set state.
+                       // We'll trust nextTick in mount.
+                       const el = document.querySelector(`path[d="${road.d}"]`); 
+                       /* Note: selector by d attribute is risky if duplicates. 
+                          Better to add data-id. But let's try to match by index since generated in order.
+                       */
+                   });
+                   
+                   // Actually, let's just grab all .road-path elements and map them by index
+                   const els = document.querySelectorAll('.road-path');
+                   els.forEach((el, i) => {
+                       if (state.roads[i]) {
+                           pathElements[state.roads[i].id] = el;
+                           state.roads[i].length = el.getTotalLength();
+                       }
+                   });
+                };
+                
+                // --- Car Logic ---
+
+                const spawnCar = () => {
+                    if (state.roads.length === 0) return;
+                    
+                    const road = state.roads[Math.floor(Math.random() * state.roads.length)];
+                    const isForward = Math.random() > 0.5;
+
+                    state.cars.push({
+                        id: carId++,
+                        roadId: road.id,
+                        t: isForward ? 0 : road.length, // Position in pixels
+                        direction: isForward ? 1 : -1,
+                        speed: 2 + Math.random() * 2, // px per frame
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        offset: 12, // Distance from center (Lane width)
+                        x: 0, 
+                        y: 0,
+                        rotation: 0
+                    });
+                };
+
+                const update = () => {
+                    state.cars.forEach((car, i) => {
+                        const roadEl = pathElements[car.roadId];
+                        const roadData = state.roads.find(r => r.id === car.roadId);
+                        
+                        if (!roadEl || !roadData) return;
+
+                        // Move
+                        car.t += car.speed * car.direction;
+
+                        // Check End of Path
+                        let endReached = false;
+                        let currentNodeId = null;
+
+                        if (car.direction === 1 && car.t >= roadData.length) {
+                            endReached = true;
+                            currentNodeId = roadData.endNode;
+                        } else if (car.direction === -1 && car.t <= 0) {
+                            endReached = true;
+                            currentNodeId = roadData.startNode;
+                        }
+
+                        if (endReached) {
+                            // Find new road connected to currentNodeId
+                            // connection candidates: edges where startNode == current OR endNode == current
+                            const candidates = state.roads.filter(r => 
+                                (r.startNode === currentNodeId || r.endNode === currentNodeId) && r.id !== car.roadId
+                            );
+
+                            if (candidates.length > 0) {
+                                // Pick one
+                                const nextRoad = candidates[Math.floor(Math.random() * candidates.length)];
+                                
+                                // Setup car for next road
+                                car.roadId = nextRoad.id;
+                                
+                                // Determine entry point
+                                if (nextRoad.startNode === currentNodeId) {
+                                    // Enter at start, go forward
+                                    car.direction = 1;
+                                    car.t = 0;
+                                } else {
+                                    // Enter at end, go backward
+                                    car.direction = -1;
+                                    // We need the length of the new road!
+                                    // It should be cached.
+                                    // Wait, if we just switched, we need to ensure we have the length.
+                                    // Assuming cache is populated.
+                                    const nextEl = pathElements[nextRoad.id];
+                                    if(nextEl) {
+                                        car.t = nextEl.getTotalLength();
+                                    } else {
+                                        // Fail safe
+                                        car.t = 1000;
+                                    }
+                                }
+                            } else {
+                                // Dead end? Just turn around on same road
+                                // U-Turn
+                                car.direction *= -1;
+                            }
+                            
+                            // Clamp to prevent out of bounds glitch
+                            return; 
+                        }
+
+                        // Calculate visual position
+                        const point = roadEl.getPointAtLength(Math.max(0, Math.min(car.t, roadData.length)));
+                        // Calculate tangent for rotation
+                        // Sample defined small delta
+                        const delta = 2; // pixels
+                        
+                        // We need a point slightly ahead or behind to get angle
+                        // Be careful at edges
+                        let p1, p2;
+                        if (car.direction === 1) {
+                             p1 = point;
+                             p2 = roadEl.getPointAtLength(Math.min(car.t + delta, roadData.length));
+                        } else {
+                             p2 = point;
+                             p1 = roadEl.getPointAtLength(Math.max(car.t - delta, 0));
+                        }
+                        
+                        // Tangent Vector (always pointing in direction of increasing T)
+                        let dx = p2.x - p1.x;
+                        let dy = p2.y - p1.y;
+                        
+                        // Normalize
+                        const len = Math.sqrt(dx*dx + dy*dy);
+                        if (len > 0) {
+                            dx /= len;
+                            dy /= len;
+                        }
+
+                        // Angle in degrees of the PATH
+                        let angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        
+                        // Lane Offset Logic
+                        // We always want to be on the "Right" side of our heading.
+                        // Vector (dx, dy) is Path Tangent.
+                        // Right of Path Tangent is (-dy, dx).
+                        // If direction is 1 (With Path), we want (-dy, dx).
+                        // If direction is -1 (Against Path), our Heading is (-dx, -dy).
+                        // Right of (-dx, -dy) is (dy, -dx).
+                        // This is equivalent to (-dy, dx) * -1.
+                        // So we multiply the offset by car.direction.
+
+                        const offsetX = -dy * car.offset * car.direction;
+                        const offsetY = dx * car.offset * car.direction;
+
+                        car.x = point.x + offsetX;
+                        car.y = point.y + offsetY;
+                        
+                        // Rotation
+                        if (car.direction === -1) {
+                             angle += 180;
+                        }
+                        
+                        car.rotation = angle + 90; // Align sprite (Up-facing) to Heading
+                    });
+
+                    requestAnimationFrame(update);
+                };
+
+                const resetMap = () => {
+                    generateMap();
+                    nextTick(() => {
+                         cachePaths();
+                         state.cars = [];
+                         for(let i=0; i<30; i++) spawnCar();
+                    });
+                };
+
+                onMounted(() => {
+                    resetMap();
+                    update();
+                    
+                    window.addEventListener('resize', resetMap);
+                });
+
+                return { state, resetMap };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
