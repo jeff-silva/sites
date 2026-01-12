@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeferson Silva - Portfolio</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Syntax Highlighting Themes -->
+    <!-- We will toggle these based on system preference via JS -->
+    <link id="prism-theme-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-vsc-dark-plus.min.css" />
+    <link id="prism-theme-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-vs.min.css" disabled />
+    
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Tailwind 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-vs-bg: var(--bg-main);
+            --color-vs-sidebar: var(--bg-sidebar);
+            --color-vs-activity: var(--bg-activity);
+            --color-vs-status: var(--bg-status);
+            --color-vs-title: var(--bg-title);
+            --color-vs-tab-active: var(--bg-tab-active);
+            --color-vs-tab-inactive: var(--bg-tab-inactive);
+            --color-vs-text: var(--text-primary);
+            --color-vs-text-mute: var(--text-secondary);
+            --color-vs-text-active: var(--text-active);
+            --color-vs-border: var(--border-color);
+            --color-vs-hover: var(--bg-hover);
+            --color-vs-selection: var(--bg-selection);
+            
+            --font-ui: 'Inter', sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        :root {
+            /* Dark Theme (Default) */
+            --bg-main: #1e1e1e;
+            --bg-sidebar: #252526;
+            --bg-activity: #333333;
+            --bg-title: #3c3c3c;
+            --bg-status: #007acc;
+            --bg-tab-active: #1e1e1e;
+            --bg-tab-inactive: #2d2d2d;
+            --bg-hover: #2a2d2e;
+            --bg-selection: #37373d;
+            --border-color: #3e3e3e;
+            --text-primary: #cccccc;
+            --text-secondary: #969696;
+            --text-active: #ffffff;
+            
+            /* Markdown Specific */
+            --md-header: #569cd6;
+            --md-link: #3794ff;
+            --md-quote-border: #007acc;
+            --md-code-bg: #101010;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                /* Light Theme Override */
+                --bg-main: #ffffff;
+                --bg-sidebar: #f3f3f3;
+                --bg-activity: #2c2c2c;
+                --bg-title: #dddddd;
+                --bg-status: #007acc;
+                --bg-tab-active: #ffffff;
+                --bg-tab-inactive: #ececec;
+                --bg-hover: #e4e4e4;
+                --bg-selection: #e4e6f1;
+                --border-color: #e4e4e4;
+                --text-primary: #333333;
+                --text-secondary: #666666;
+                --text-active: #000000;
+
+                /* Markdown Specific Light */
+                --md-header: #0056b3;
+                --md-link: #0056b3;
+                --md-quote-border: #007acc;
+                --md-code-bg: #f5f5f5;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #424242;
+        }
+        @media (prefers-color-scheme: light) {
+            ::-webkit-scrollbar-thumb {
+                background: #c1c1c1;
+            }
+        }
+        
+        /* Prism adjustments */
+        pre[class*="language-"] {
+            margin: 0 !important;
+            padding: 1rem !important;
+            background: transparent !important;
+            text-shadow: none !important;
+        }
+
+        /* Markdown Styles (Preview Mode) */
+        .markdown-preview {
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            color: var(--color-vs-text);
+        }
+        .markdown-preview h1 { font-size: 2.2em; border-bottom: 1px solid var(--color-vs-border); padding-bottom: 0.3em; margin-bottom: 1em; color: var(--md-header); font-weight: 600; }
+        .markdown-preview h2 { font-size: 1.8em; margin-top: 1.5em; margin-bottom: 0.8em; border-bottom: 1px solid var(--color-vs-border); padding-bottom: 0.2em; font-weight: 600; }
+        .markdown-preview h3 { font-size: 1.4em; margin-top: 1.2em; margin-bottom: 0.5em; font-weight: 600; }
+        .markdown-preview p { margin-bottom: 1em; }
+        .markdown-preview ul, .markdown-preview ol { margin-bottom: 1em; padding-left: 2em; }
+        .markdown-preview li { margin-bottom: 0.4em; }
+        .markdown-preview strong { color: var(--color-vs-text-active); font-weight: 700; }
+        .markdown-preview em { font-style: italic; color: var(--color-vs-text-mute); }
+        .markdown-preview a { color: var(--md-link); text-decoration: none; }
+        .markdown-preview a:hover { text-decoration: underline; }
+        .markdown-preview blockquote { border-left: 4px solid var(--md-quote-border); padding-left: 1em; margin-left: 0; color: var(--color-vs-text-mute); }
+        .markdown-preview code { font-family: var(--font-code); background: var(--md-code-bg); padding: 2px 4px; border-radius: 4px; font-size: 0.9em; }
+        .markdown-preview pre { background: var(--md-code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 1em; }
+        .markdown-preview pre code { background: transparent; padding: 0; border-radius: 0; }
+        .markdown-preview .company-logo { width: 40px; height: 40px; object-fit: contain; margin-right: 15px; border-radius: 4px; background: white; padding: 2px; }
+        .markdown-preview .job-header { display: flex; align-items: center; margin-bottom: 0.5rem; }
+        
+        /* Icon Colors */
+        .icon-js { color: #f1e05a; }
+        .icon-ts { color: #3178c6; }
+        .icon-html { color: #e34c26; }
+        .icon-css { color: #563d7c; }
+        .icon-json { color: #cbcb41; }
+        .icon-md { color: #519aba; }
+        .icon-folder { color: #dcb67a; }
+        .icon-default { color: #ccc; }
+    </style>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="font-ui bg-vs-bg text-vs-text h-screen overflow-hidden text-[13px] m-0 p-0 box-border transition-colors duration-200">
+    <div id="app" class="flex flex-col h-screen">
+        <!-- Application Layout -->
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Activity Bar -->
+            <aside class="w-[48px] bg-vs-activity flex flex-col justify-between pb-2.5 shrink-0 z-20">
+                <div class="flex flex-col">
+                    <div class="h-[48px] flex items-center justify-center cursor-pointer text-2xl text-[#858585] border-l-2 border-transparent hover:text-white transition-colors" :class="{ '!text-white !border-white': activeActivity === 'explorer' }" @click="activeActivity = 'explorer'" title="Explorer">
+                        <i class="fa-regular fa-file text-[24px]"></i>
+                    </div>
+                    <div class="h-[48px] flex items-center justify-center cursor-pointer text-2xl text-[#858585] border-l-2 border-transparent hover:text-white transition-colors" title="Search">
+                        <i class="fa-solid fa-magnifying-glass text-[24px]"></i>
+                    </div>
+                    <div class="h-[48px] flex items-center justify-center cursor-pointer text-2xl text-[#858585] border-l-2 border-transparent hover:text-white transition-colors" title="Source Control">
+                        <i class="fa-solid fa-code-branch text-[24px]"></i>
+                    </div>
+                    <div class="h-[48px] flex items-center justify-center cursor-pointer text-2xl text-[#858585] border-l-2 border-transparent hover:text-white transition-colors" title="Extensions">
+                        <i class="fa-solid fa-border-all text-[24px]"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="h-[48px] flex items-center justify-center cursor-pointer text-2xl text-[#858585] hover:text-white transition-colors" title="Manage">
+                        <i class="fa-solid fa-gear text-[24px]"></i>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Sidebar -->
+            <aside class="w-[250px] bg-vs-sidebar flex flex-col border-r border-vs-border shrink-0 transition-colors duration-200" v-show="activeActivity === 'explorer'">
+                <div class="h-[35px] flex items-center justify-between px-5 text-[11px] font-medium tracking-[0.5px] text-vs-text-mute">
+                    <span class="font-bold">EXPLORER</span>
+                    <div class="actions">
+                        <i class="fa-solid fa-ellipsis hover:text-vs-text-active cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto">
+                    <div class="flex items-center p-1.5 cursor-pointer font-bold text-vs-text hover:text-vs-text-active" @click="toggleSection('portfolio')">
+                        <i class="fa-solid fa-chevron-down mr-1.5 text-[10px] w-4 text-center transition-transform" :class="{ '-rotate-90': !sections.portfolio }"></i>
+                        <span class="block text-xs">JEFERSON-SILVA</span>
+                    </div>
+                    <div class="file-tree" v-show="sections.portfolio">
+                        <file-node 
+                            v-for="node in fileSystem" 
+                            :key="node.id" 
+                            :node="node" 
+                            :active-file-id="activeFile?.id"
+                            @select-file="openFile"
+                        ></file-node>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Editor Area -->
+            <main class="flex-1 flex flex-col bg-vs-bg overflow-hidden min-w-0 transition-colors duration-200">
+                <!-- Tabs -->
+                <div class="h-[35px] bg-vs-tab-inactive flex overflow-x-auto scrollbar-thin">
+                    <div 
+                        v-for="tab in openTabs" 
+                        :key="tab.id" 
+                        class="flex items-center px-2.5 min-w-[120px] max-w-[200px] h-full border-r border-vs-border cursor-pointer select-none relative text-vs-text-mute hover:bg-vs-bg group"
+                        :class="{ '!bg-vs-bg !text-vs-text-active border-t border-t-vs-status': activeFile && activeFile.id === tab.id }"
+                        @click="setActiveFile(tab)"
+                    >
+                        <i :class="getFileIcon(tab.name)" class="mr-1.5 text-[14px]"></i>
+                        <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis italic">{{ tab.name }} <span v-if="tab.preview" class="not-italic text-xs opacity-50 ml-1">preview</span></span>
+                        <span class="ml-2 text-[11px] p-0.5 rounded opacity-0 group-hover:opacity-100 hover:bg-black/10 transition-opacity" :class="{ '!opacity-100': activeFile && activeFile.id === tab.id }" @click.stop="closeTab(tab.id)">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Breadcrumbs -->
+                <div class="h-[22px] flex items-center px-4 bg-vs-bg text-vs-text-mute text-xs border-b border-vs-border/10" v-if="activeFile">
+                    <span class="cursor-pointer hover:text-vs-text">jeferson-silva</span>
+                    <span class="mx-1.5">›</span>
+                    <span class="cursor-pointer hover:text-vs-text">{{ activeFile.path || activeFile.name }}</span>
+                </div>
+
+                <!-- Editor Content -->
+                <div class="flex-1 flex overflow-hidden relative" v-if="activeFile">
+                    <!-- Standard Code View -->
+                    <template v-if="!activeFile.preview">
+                        <div class="w-[50px] py-4 text-right text-[#858585] bg-vs-bg font-code text-[14px] leading-[1.5] select-none pr-[15px] border-r border-vs-border/10">
+                            <div v-for="n in lineCount" :key="n" class="pr-[5px]">{{ n }}</div>
+                        </div>
+                        <div class="flex-1 overflow-auto bg-vs-bg font-code text-[14px] cursor-text">
+                            <pre><code :class="'language-' + activeFile.language" ref="codeBlock" :key="activeFile.id">{{ activeFile.content }}</code></pre>
+                        </div>
+                    </template>
+                    
+                    <!-- Markdown Preview View -->
+                    <div v-else class="flex-1 overflow-auto bg-vs-bg markdown-preview" v-html="renderedMarkdown"></div>
+                </div>
+                
+                <div class="flex-1 flex flex-col items-center justify-center text-vs-text-mute opacity-30" v-else>
+                    <div class="text-[120px] mb-5">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <p class="mb-2 font-bold text-lg">Jeferson Silva</p>
+                    <p class="text-sm">Select a file to view portfolio details</p>
+                </div>
+            </main>
+        </div>
+
+        <!-- Status Bar -->
+        <footer class="h-[22px] bg-vs-status flex justify-between items-center px-2 text-white text-[11px] select-none z-10 w-full">
+            <div class="flex">
+                <div class="flex items-center px-2 cursor-pointer h-[22px] hover:bg-white/20 bg-[#0066b8] -ml-2 pl-3 pr-3 mr-1.5">
+                    <i class="fa-solid fa-code-branch text-[11px] mr-1.5"></i>
+                    <span>main*</span>
+                </div>
+                <div class="flex items-center px-2 cursor-pointer h-[22px] hover:bg-white/20">
+                    <i class="fa-regular fa-circle-check text-[11px] mr-1.5"></i>
+                    <span>0 errors</span>
+                </div>
+            </div>
+            <div class="flex" v-if="activeFile">
+                <div class="flex items-center px-2 cursor-pointer h-[22px] hover:bg-white/20">
+                    <span>{{ activeFile.preview ? 'Markdown Preview' : `Ln ${currentLine}, Col ${currentCol}` }}</span>
+                </div>
+                <div class="flex items-center px-2 cursor-pointer h-[22px] hover:bg-white/20">
+                    <span>UTF-8</span>
+                </div>
+                <div class="flex items-center px-2 cursor-pointer h-[22px] hover:bg-white/20">
+                    <span>{{ getLanguageLabel(activeFile.language) }}</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    
+    <script>
+        const { createApp, ref, computed, onMounted, nextTick, watch } = Vue;
+
+        const FileNode = {
+            name: 'file-node',
+            props: ['node', 'activeFileId'],
+            template: `
+                <div>
+                    <div 
+                        class="flex items-center px-2.5 py-1 cursor-pointer text-vs-text hover:bg-vs-hover transition-colors" 
+                        :class="{ 'bg-vs-selection text-vs-text-active': activeFileId === node.id, 'pl-9': node.parentId }"
+                        @click="handleClick"
+                    >
+                        <div class="w-[18px] mr-1.5 text-center">
+                            <i v-if="node.type === 'folder'" class="fa-solid fa-folder icon-folder text-sm"></i>
+                            <i v-else :class="getFileIconClass(node.name)" class="text-sm"></i>
+                        </div>
+                        <span class="text-[13px]">{{ node.name }}</span>
+                    </div>
+                    <div v-if="node.type === 'folder' && isOpen">
+                        <file-node 
+                            v-for="child in node.children" 
+                            :key="child.id" 
+                            :node="child"
+                            :active-file-id="activeFileId"
+                            @select-file="$emit('select-file', $event)"
+                        ></file-node>
+                    </div>
+                </div>
+            `,
+            data() {
+                return {
+                    isOpen: true
+                }
+            },
+            methods: {
+                handleClick() {
+                    if (this.node.type === 'folder') {
+                        this.isOpen = !this.isOpen;
+                    } else {
+                        this.$emit('select-file', this.node);
+                    }
+                },
+                getFileIconClass(filename) {
+                    const ext = filename.split('.').pop();
+                    const map = {
+                        'js': 'fa-brands fa-js icon-js',
+                        'ts': 'fa-brands fa-js icon-ts',
+                        'html': 'fa-brands fa-html5 icon-html',
+                        'css': 'fa-brands fa-css3-alt icon-css',
+                        'json': 'fa-solid fa-brackets-curly icon-json',
+                        'py': 'fa-brands fa-python icon-py',
+                        'md': 'fa-brands fa-markdown icon-md'
+                    };
+                    return map[ext] || 'fa-solid fa-file icon-default';
+                }
+            }
+        };
+
+        createApp({
+            components: {
+                'file-node': FileNode
+            },
+            setup() {
+                const activeActivity = ref('explorer');
+                
+                // System Preference Listener
+                const updateThemeFromSystem = (e) => {
+                    const lightThemeLink = document.getElementById('prism-theme-light');
+                    const darkThemeLink = document.getElementById('prism-theme-dark');
+                    const isDark = !e.matches; // e.matches is true if light mode
+                    
+                    darkThemeLink.disabled = !isDark;
+                    lightThemeLink.disabled = isDark;
+                }
+
+                // Initial check
+                const matchMedia = window.matchMedia('(prefers-color-scheme: light)');
+                updateThemeFromSystem(matchMedia);
+                matchMedia.addEventListener('change', updateThemeFromSystem);
+
+
+                const fileSystem = ref([
+                    {
+                        id: '1',
+                        name: 'README.md',
+                        type: 'file',
+                        language: 'markdown',
+                        preview: true,
+                        content: `# Jeferson Silva
+> **Senior Fullstack Dev | Tech Lead**  
+> *Belo Horizonte, MG, Brasil*
+
+<br>
+
+### <i class="fa-solid fa-user"></i> Bio
+Desenvolvedor Full-stack com **14 anos de experiência** em arquitetura escalável, microservices e cloud.  
+Atuei em liderança de reengenharia de sistemas legados, migração para microsserviços e implementação de pipelines CI/CD. Expertise em integrar APIs de IA para automação de processos.
+
+---
+
+### <i class="fa-solid fa-code"></i> Tech Stack
+
+| Domain | Technologies |
+|--------|--------------|
+| **Languages** | Node.js, PHP, Typescript, Python, C# |
+| **Frontend** | Vue.js, Nuxt 4, React.js, Tailwind, Vuetify |
+| **Backend** | NestJS, Laravel, Express, AdonisJS |
+| **Database** | MySQL, PostgreSQL, Firebase, Redis, Prisma |
+| **DevOps** | GCP, Docker, Kubernetes, CI/CD |
+
+---
+
+### <i class="fa-solid fa-paper-plane"></i> Contact
+* **Phone:** +55 31 99527-1426
+* **Email:** jeferson.i.silva@gmail.com
+* **LinkedIn:** [linkedin.com/in/jefersonsiqueira](https://www.linkedin.com/in/jefersonsiqueira)
+* **GitHub:** [jeff-silva.github.io](https://jeff-silva.github.io)`
+                    },
+                    {
+                        id: '2',
+                        name: 'experience.md',
+                        type: 'file',
+                        language: 'markdown',
+                        preview: true,
+                        content: `# Professional Experience
+
+### <i class="fa-solid fa-briefcase"></i> CardCom
+**Technical Lead** | *Dec 2023 - Present*
+> Belo Horizonte, Brazil
+
+* **Liderança e Reengenharia**: Migração da arquitetura de sistema central de Laravel 4 para **NestJS**.
+* **Automação**: Implementação de automação completa do ciclo de impressão de cartões.
+* **Full-stack**: Desenvolvimento de painéis administrativos e interfaces para clientes.
+
+---
+
+### <i class="fa-solid fa-chalkboard-user"></i> Labscript.dev
+**Full-stack Developer & Instructor** | *Jan 2011 - Dec 2023*
+> Belo Horizonte, Brazil
+
+* Atuei como instrutor de desenvolvimento web (PHP, SQL, JS).
+* Planejei e ministrei cursos para formação de novos desenvolvedores.
+* Liderança técnica na criação de material didático.
+
+---
+
+### <i class="fa-solid fa-globe"></i> Search and Stay
+**Full-stack Developer** | *Dec 2022 - Nov 2023*
+> Australia (Remote)
+
+* Desenvolvimento frontend com **Vue.js**, **Nuxt.js** e backend em **Laravel**.
+* Integração e customização de WordPress.
+* Foco em performance e SEO.
+
+---
+
+### <i class="fa-solid fa-layer-group"></i> Listra
+**Full-stack Developer** | *Oct 2020 - Apr 2022*
+> Belo Horizonte, Brazil
+
+* Atuação em sistemas de alta visibilidade para clientes como **Unidas** e **EPA**.
+* Stack: Vue.js, React.js, Laravel, CakePHP.
+
+---
+
+### <i class="fa-solid fa-building"></i> Cushman & Wakefield
+**Full-stack Developer** | *Feb 2012 - Jan 2013*
+> Belo Horizonte, Brazil
+
+* Transformação de planilhas complexas em aplicações web robustas para a **Vale**.
+* Interface de automação com gráficos estatísticos (Curva de Gauss).`
+                    },
+                    {
+                        id: '3',
+                        name: 'skills.md',
+                        type: 'file',
+                        language: 'markdown',
+                        preview: true,
+                        content: `# Technical Skills
+
+### Core Competencies
+* **Team Leadership**: Liderança de equipes ágeis e técnicas.
+* **Architecture**: Clean Architecture, Microservices, MVC, SOLID.
+* **AI Integration**: Processos de automação AI-driven.
+
+### Languages & Frameworks
+\`\`\`javascript
+const stack = {
+  frontend: ["Vue 3", "Nuxt 3", "React", "Next.js", "Tailwind"],
+  backend: ["Node.js", "NestJS", "Laravel", "PHP", "Express"],
+  mobile: ["PWA", "React Native"],
+  other: ["Python", "C#", "Unity"]
+};
+\`\`\`
+
+### Tools & Platforms
+* **Cloud**: Google Cloud Platform (GCP), AWS (Basic)
+* **Containerization**: Docker, Docker Compose
+* **Databases**: MySQL, PostgreSQL, Firestore, DynamoDB, MongoDB
+* **Other**: Git, Figma, Wordpress, Elementor, WooCommerce`
+                    },
+                    {
+                        id: '4',
+                        name: 'contact.json',
+                        type: 'file',
+                        language: 'json',
+                        preview: false,
+                        content: `{
+    "contact_info": {
+        "phone": "+55 31 99527-1426",
+        "email": "jeferson.i.silva@gmail.com",
+        "linkedin": "linkedin.com/in/jefersonsiqueira",
+        "github": "jeff-silva.github.io",
+        "location": "Belo Horizonte, MG, Brasil"
+    },
+    "languages": {
+        "portuguese": "Native/Bilingual",
+        "english": "Elementary"
+    },
+    "education": [
+        {
+            "degree": "Bachelor's AI & Machine Learning",
+            "school": "UniCesumar",
+            "period": "2024 - 2026"
+        },
+        {
+            "degree": "Cinema e Audiovisual",
+            "school": "Centro Universitário UNA",
+            "period": "2014 - 2017"
+        }
+    ]
+}`
+                    },
+                    {
+                        id: '5',
+                        name: 'projects',
+                        type: 'folder',
+                        children: [
+                            {
+                                id: '51',
+                                parentId: '5',
+                                name: 'nexus_admin.ts',
+                                type: 'file',
+                                language: 'typescript',
+                                preview: false,
+                                content: `/**
+ * Project: Nexus Admin
+ * Description: Sistema de dashboard administrativo com analytics
+ * Tech: Vue 3, Tailwind, Chart.js
+ */
+
+export const nexusAdmin = {
+    features: ['Dark Mode', 'Real-time Data', 'Responsive'],
+    status: 'Completed',
+    role: 'Frontend Lead'
+};`
+                            },
+                        ]
+                    }
+                ]);
+
+                const openTabs = ref([]);
+                const activeFile = ref(null);
+                const sections = ref({
+                    portfolio: true
+                });
+                
+                // Editor State
+                const currentLine = ref(1);
+                const currentCol = ref(1);
+                const codeBlock = ref(null);
+
+                // Computed
+                const lineCount = computed(() => {
+                    if (!activeFile.value) return 0;
+                    return activeFile.value.content.split('\\n').length;
+                });
+                
+                const renderedMarkdown = computed(() => {
+                    if (activeFile.value && activeFile.value.preview) {
+                        return marked.parse(activeFile.value.content);
+                    }
+                    return '';
+                });
+
+                // Methods
+                const toggleSection = (section) => {
+                    sections.value[section] = !sections.value[section];
+                };
+
+                const openFile = (file) => {
+                    if (!openTabs.value.find(tab => tab.id === file.id)) {
+                        openTabs.value.push(file);
+                    }
+                    setActiveFile(file);
+                };
+
+                const setActiveFile = (file) => {
+                    activeFile.value = file;
+                    if (!file.preview) {
+                        highlightCode();
+                    }
+                };
+
+                const closeTab = (id) => {
+                    const index = openTabs.value.findIndex(tab => tab.id === id);
+                    if (index > -1) {
+                        openTabs.value.splice(index, 1);
+                        if (activeFile.value && activeFile.value.id === id) {
+                            const nextTab = openTabs.value[index] || openTabs.value[index - 1];
+                            if (nextTab) {
+                                setActiveFile(nextTab);
+                            } else {
+                                activeFile.value = null;
+                            }
+                        }
+                    }
+                };
+
+                const highlightCode = async () => {
+                    await nextTick();
+                    if (codeBlock.value) {
+                        Prism.highlightElement(codeBlock.value);
+                    }
+                };
+
+                const getFileIcon = (filename) => {
+                    const ext = filename.split('.').pop();
+                    const map = {
+                        'js': 'fa-brands fa-js icon-js',
+                        'ts': 'fa-brands fa-js icon-ts',
+                        'html': 'fa-brands fa-html5 icon-html',
+                        'css': 'fa-brands fa-css3-alt icon-css',
+                        'json': 'fa-solid fa-brackets-curly icon-json',
+                        'py': 'fa-brands fa-python icon-py',
+                        'md': 'fa-brands fa-markdown icon-md'
+                    };
+                    return map[ext] || 'fa-solid fa-file icon-default';
+                };
+                
+                const getLanguageLabel = (lang) => {
+                    const map = {
+                        'html': 'HTML',
+                        'css': 'CSS',
+                        'javascript': 'JavaScript',
+                        'typescript': 'TypeScript',
+                        'json': 'JSON',
+                        'markdown': 'Markdown'
+                    };
+                    return map[lang] || lang;
+                };
+
+                // Open default file
+                onMounted(() => {
+                    openFile(fileSystem.value[0]);
+                });
+
+                return {
+                    fileSystem,
+                    openTabs,
+                    activeFile,
+                    sections,
+                    currentLine,
+                    currentCol,
+                    lineCount,
+                    codeBlock,
+                    activeActivity,
+                    renderedMarkdown,
+                    toggleSection,
+                    openFile,
+                    setActiveFile,
+                    closeTab,
+                    getFileIcon,
+                    getLanguageLabel
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
