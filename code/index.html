@@ -531,6 +531,7 @@ const stack = {
                         name: 'projects',
                         type: 'folder',
                         children: [
+                            
                             {
                                 id: '51',
                                 parentId: '5',
@@ -549,7 +550,47 @@ export const nexusAdmin = {
     status: 'Completed',
     role: 'Frontend Lead'
 };`
+                            }
+                        ]
+                    },
+                    {
+                        id: '6',
+                        name: 'rust-3d-app',
+                        type: 'folder',
+                        children: [
+                            { 
+                                id: '61', 
+                                parentId: '6', 
+                                name: 'Cargo.toml', 
+                                type: 'file', 
+                                language: 'toml', 
+                                preview: false, 
+                                content: `[package]
+name = "rust-3d-app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wasm-bindgen = "0.2"
+three-d = "0.17"` 
                             },
+                            { 
+                                id: '62', 
+                                parentId: '6', 
+                                name: 'src/lib.rs', 
+                                type: 'file', 
+                                language: 'rust', 
+                                preview: false, 
+                                content: `use three_d::*;
+
+#[wasm_bindgen(start)]
+pub fn start() -> Result<(), JsValue> {
+    let window = Window::new(WindowSettings::default()).unwrap();
+    let context = window.gl();
+    // Render loop...
+    Ok(())
+}` 
+                            }
                         ]
                     }
                 ]);
